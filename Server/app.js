@@ -1,10 +1,12 @@
 const express = require("express");
-var passport = require("passport");
 const cors = require("cors");
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
+
+const googleRouter = require("./route");
 //
-const authRouter = require("./routes/auth.route");
-//
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // enabling cors for all requests by using cors middleware
@@ -12,12 +14,7 @@ app.use(cors());
 // Enable pre-flight
 app.options("*", cors());
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use("/auth", authRouter);
-app.all("*", (req, res, next) => {
-  console.log("EndPoint NOt Found.");
-});
+app.use("/", googleRouter);
 
 const PORT = process.env.SERVERPORT | 3001;
 

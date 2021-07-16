@@ -1,10 +1,17 @@
 import React, { useEffect } from "react";
 import { GoogleLogin, useGoogleLogin } from "react-google-login";
-
+import axios from "axios";
 function App() {
-  const onSuccess = (res) => {
-    // console.log(res);
-    console.log(res.Ys.It, res.Ys.Ve);
+  const onSuccess = (data) => {
+    console.log(data.tokenId);
+    axios
+      .post("http://localhost:3001/google-login", { token: data.tokenId })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
   };
 
   const onFailure = (res) => {
@@ -28,7 +35,7 @@ function App() {
           )}
           buttonText="Login"
           onSuccess={onSuccess}
-          uxMode={"redirect"}
+          // uxMode={"redirect"}
           onFailure={onFailure}
           RedirectURL={"postmessage"}
           cookiePolicy={"single_host_origin"}
