@@ -1,0 +1,14 @@
+
+# Client side
+/Client/node_modules
+/Client/package-lock.json
+
+
+
+
+# Server side
+/Server/node_modules
+/Client/package-lock.json
+
+# dependencies
+.env
