@@ -1,0 +1,11 @@
+.btnFacebook {
+  width: 165px;
+  height: 35px;
+  border-radius: 4px;
+  background: #1a5512;
+  color: white;
+  border: 0px transparent;
+  text-align: center;
+  margin: 5px;
+  display: inline-block;
+}
