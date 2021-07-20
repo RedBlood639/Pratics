@@ -1,0 +1,1 @@
+{"ast":null,"code":"module.exports = function (hljs) {\n  return {\n    subLanguage: 'xml',\n    contains: [{\n      begin: '<%',\n      end: '%>',\n      subLanguage: 'vbscript'\n    }]\n  };\n};","map":null,"metadata":{},"sourceType":"script"}

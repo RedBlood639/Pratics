@@ -1,0 +1,1 @@
+{"ast":null,"code":"module.exports = typeof window == 'object';","map":null,"metadata":{},"sourceType":"script"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"var wellKnownSymbol = require('../internals/well-known-symbol');\n\nvar TO_STRING_TAG = wellKnownSymbol('toStringTag');\nvar test = {};\ntest[TO_STRING_TAG] = 'z';\nmodule.exports = String(test) === '[object z]';","map":null,"metadata":{},"sourceType":"script"}

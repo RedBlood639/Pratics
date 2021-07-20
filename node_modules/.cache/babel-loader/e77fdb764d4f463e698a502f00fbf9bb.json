@@ -1,0 +1,1 @@
+{"ast":null,"code":"var classof = require('../internals/classof-raw');\n\nvar global = require('../internals/global');\n\nmodule.exports = classof(global.process) == 'process';","map":null,"metadata":{},"sourceType":"script"}

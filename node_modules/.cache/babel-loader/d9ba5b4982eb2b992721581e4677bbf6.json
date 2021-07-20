@@ -1,0 +1,1 @@
+{"ast":null,"code":"import locale from './locale';\nexport default function setLocale(custom) {\n  Object.keys(custom).forEach(function (type) {\n    Object.keys(custom[type]).forEach(function (method) {\n      locale[type][method] = custom[type][method];\n    });\n  });\n}","map":null,"metadata":{},"sourceType":"module"}

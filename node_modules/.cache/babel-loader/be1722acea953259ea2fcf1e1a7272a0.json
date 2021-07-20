@@ -1,0 +1,1 @@
+{"ast":null,"code":"var userAgent = require('../internals/engine-user-agent');\n\nmodule.exports = /web0s(?!.*chrome)/i.test(userAgent);","map":null,"metadata":{},"sourceType":"script"}

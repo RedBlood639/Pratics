@@ -1,0 +1,1 @@
+{"ast":null,"code":"var global = require('../internals/global');\n\nvar setGlobal = require('../internals/set-global');\n\nvar SHARED = '__core-js_shared__';\nvar store = global[SHARED] || setGlobal(SHARED, {});\nmodule.exports = store;","map":null,"metadata":{},"sourceType":"script"}
