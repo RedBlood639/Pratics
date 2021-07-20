@@ -1,1 +1,0 @@
-{"ast":null,"code":"var fails = require('../internals/fails');\n\nmodule.exports = !fails(function () {\n  // eslint-disable-next-line es/no-object-isextensible, es/no-object-preventextensions -- required for testing\n  return Object.isExtensible(Object.preventExtensions({}));\n});","map":null,"metadata":{},"sourceType":"script"}

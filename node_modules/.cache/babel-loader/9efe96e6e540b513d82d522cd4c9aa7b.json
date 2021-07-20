@@ -1,1 +1,0 @@
-{"ast":null,"code":"var wellKnownSymbol = require('../internals/well-known-symbol');\n\nexports.f = wellKnownSymbol;","map":null,"metadata":{},"sourceType":"script"}
