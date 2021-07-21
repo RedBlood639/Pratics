@@ -1,7 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/~
 /node_modules
 /.pnp
 .pnp.js
@@ -9,18 +8,7 @@
 # testing
 /coverage
 
-# redactor
-/.idea
-
-# assets
-/public/media
-/src/_metronic/_assets/js
-/src/_metronic/_assets/plugins
-/src/_metronic/_assets/sass
-
-
 # production
-/_site
 /build
 
 # misc
@@ -33,4 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-yarn.lock
