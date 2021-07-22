@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 
-const SignUp: React.FC<{ history?: any; match?: any }> = ({ history }) => {
+const SignUp: React.FC = () => {
   return (
     <React.Fragment>
       <form className="form-content">
@@ -11,8 +11,7 @@ const SignUp: React.FC<{ history?: any; match?: any }> = ({ history }) => {
             Enter your details to create your account?
           </span>
         </div>
-        <div>
-          <p className="sm-label">Email</p>{" "}
+        <div className="pt3">
           <input
             type="text"
             name="email"
@@ -21,22 +20,36 @@ const SignUp: React.FC<{ history?: any; match?: any }> = ({ history }) => {
           <p className="label color-danger">Username is required</p>
         </div>
         <div>
-          <div className="forget">
-            <span className="sm-label">Password</span>
-            <a href="#" className="sm-label color-blue-1 font-weight-800">
-              Forgot Password ?
-            </a>
-          </div>
-          <p></p>
+          <input
+            type="email"
+            name="email"
+            placeholder="please input your email"
+          />
+          <p className="label color-danger">email is required</p>
+        </div>
+        <div>
           <input
             type="password"
-            name="password"
+            name="password1"
             placeholder="please input your password"
           />
           <p className="label color-danger">Password is required</p>
         </div>
         <div>
-          <button className="font-weight-600 sm-label">Sign In</button>
+          <input
+            type="password"
+            name="password2"
+            placeholder="please confirm your password"
+          />
+          <p className="label color-danger">Confirm Password is required</p>
+        </div>
+        <div className="mt2">
+          <button role="signup" className="font-weight-600 sm-label mr1">
+            Sign Up
+          </button>
+          <button role="cancel" className="font-weight-600 sm-label">
+            Cancel
+          </button>
         </div>
       </form>
     </React.Fragment>

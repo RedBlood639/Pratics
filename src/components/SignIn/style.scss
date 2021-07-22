@@ -2,15 +2,12 @@
   min-width: 400px;
   a {
     text-decoration: none;
+    &:hover {
+      cursor: pointer !important;
+      color: var(--color-blue-2) !important;
+    }
   }
-  a:hover {
-    cursor: pointer !important;
-    color: var(--color-blue-2) !important;
-  }
-  .forget {
-    display: flex;
-    justify-content: space-between;
-  }
+
   input {
     width: 100%;
     height: 3.5rem;
@@ -18,15 +15,15 @@
     border-radius: 0.5rem;
     background-color: var(--color-gray-1);
     padding-left: 1rem;
-  }
-  input:focus {
-    outline: none;
-  }
-  input::placeholder {
-    color: var(--color-gray-2);
-    opacity: 1;
-  }
 
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: var(--color-gray-2);
+      opacity: 1;
+    }
+  }
   button {
     height: 3rem;
     width: 30%;
@@ -35,11 +32,13 @@
     color: var(--color-white);
     background-color: var(--color-blue-1);
     cursor: pointer !important;
-  }
-  button:hover {
-    background-color: var(--color-blue-2);
+    &:hover {
+      background-color: var(--color-blue-2);
+    }
   }
 
   .forget {
+    display: flex;
+    justify-content: space-between;
   }
 }

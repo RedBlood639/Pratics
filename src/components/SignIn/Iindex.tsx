@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 
-const SignIn: React.FC<{ history?: any; match?: any }> = ({ history }) => {
+const SignIn: React.FC = () => {
   return (
     <React.Fragment>
       <form className="form-content">
