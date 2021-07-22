@@ -1,18 +1,29 @@
-import React from "react";
-import "./App.css";
+import React, { Suspense } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+  Route,
+} from "react-router-dom";
+import PrivateRoute from "./pages/PriavteRoute";
+import Loading from "./components/Loading";
+// import stylesheets
+import "./assets/scss/app.scss";
 
-function App() {
+const AdminSetup = React.lazy(() => import("./pages/AdminSetup"));
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </header>
+    <div className="app-container">
+      <Router>
+        <Suspense fallback={<Loading />}>
+          <Switch>
+            <Route path="/" exact component={AdminSetup} />
+          </Switch>
+        </Suspense>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
-
-//http://mindmail-env.eba-5umpsmid.ap-southeast-2.elasticbeanstalk.com

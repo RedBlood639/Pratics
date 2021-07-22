@@ -1,1 +1,1 @@
-#MindMail Admin Panel
+# Mindmail Admin panel
