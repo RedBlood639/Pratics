@@ -1,5 +1,13 @@
+.left-container {
+  background-color: var(--color-orange-1);
+}
 .home-container {
-  .aside-display {
-    background-color: var(--purple-color);
-  }
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100vh;
+}
+.right-container {
+  display: inline-grid;
+  justify-content: center;
+  align-content: center;
 }
