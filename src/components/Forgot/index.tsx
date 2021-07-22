@@ -1,7 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
 
-const Forgot: React.FC = () => {
+const Forgot: React.FC<{ Onhandler?: any }> = ({ Onhandler }) => {
+  const [email, setEmail] = useState<string>("");
+  const [errors, setErrors] = useState<string>("");
+
+  const handleValidation = () => {
+    if (!email) {
+      setErrors("Email is required");
+      return false;
+    }
+    if (typeof email !== "undefined") {
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!emailPattern.test(email)) {
+        setErrors("Email is not valid");
+        return false;
+      }
+    }
+    setErrors("");
+    return true;
+  };
+
+  const handleValidateByEvent = (value: string) => {
+    setEmail(value);
+    handleValidation();
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if (handleValidation()) {
+      // submit email
+    } else {
+      return false;
+    }
+  };
   return (
     <React.Fragment>
       <form className="form-content">
@@ -18,15 +50,25 @@ const Forgot: React.FC = () => {
           <input
             type="text"
             name="email"
+            value={email}
             placeholder="please input your email"
+            onChange={(e) => handleValidateByEvent(e.target.value)}
           />
-          <p className="label color-danger">Email is required</p>
+          <p className="label color-danger">{errors}</p>
         </div>
         <div>
-          <button role="submit" className="font-weight-600 sm-label mr1">
+          <button
+            role="submit"
+            className="font-weight-600 sm-label mr1"
+            onClick={handleSubmit}
+          >
             Submit
           </button>
-          <button role="cancel" className="font-weight-600 sm-label">
+          <button
+            role="cancel"
+            className="font-weight-600 sm-label"
+            onClick={() => Onhandler(0)}
+          >
             Cancel
           </button>
         </div>

@@ -5,14 +5,23 @@ import Forgot from "../../../components/Forgot";
 import "./style.scss";
 
 const HomePage: React.FC<{ history?: any; match?: any }> = ({ history }) => {
-  const [signpage, setSignpage] = useState<boolean>(true);
+  const [signpage, setSignpage] = useState<number>(0);
+
+  const handleStateClick = (state: number) => {
+    setSignpage(state);
+  };
   return (
     <div className="home-container">
       <div className="left-container"></div>
       <div className="right-container">
         <div className="form-container">
-          {/* {signpage ? <SignIn /> : <SignUp />} */}
-          <Forgot />
+          {signpage === 0 ? (
+            <SignIn Onhandler={handleStateClick} />
+          ) : signpage === 1 ? (
+            <SignUp Onhandler={handleStateClick} />
+          ) : (
+            <Forgot Onhandler={handleStateClick} />
+          )}
         </div>
       </div>
     </div>
