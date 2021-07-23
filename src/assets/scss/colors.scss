@@ -7,7 +7,8 @@ $color-gray-1: #e1f0ff;
 $color-gray-2: #b5b5c3;
 $color-orange-1: rgb(231, 195, 147);
 $color-danger: rgb(255, 0, 0);
-
+$color-menu-1: #10889d;
+$color-menu-2: #0f8094;
 :root {
   --color-primary: #10889d;
   --color-secondary: #00011d;
@@ -18,6 +19,8 @@ $color-danger: rgb(255, 0, 0);
   --color-gray-1: #e1f0ff;
   --color-gray-2: #b5b5c3;
   --color-orange-1: rgb(231, 195, 147);
+  --color-menu-1: #10889d;
+  --color-menu-2: #0f8094;
 }
 //
 
@@ -48,4 +51,10 @@ $color-danger: rgb(255, 0, 0);
 }
 .color-blue-2 {
   color: $color-blue-2 !important;
+}
+.color-menu-1 {
+  color: $color-menu-1 !important;
+}
+.color-menu-2 {
+  color: $color-menu-2 !important;
 }

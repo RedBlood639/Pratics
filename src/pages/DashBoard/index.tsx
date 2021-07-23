@@ -15,11 +15,11 @@ const DashBoard: React.FC<{ history: any; match: any }> = ({ match }) => {
       <div className="menu">
         <AsdieMunu />
       </div>
-      <div className="content">
+      <div className="content mt1 mb1 mr1 ml1">
         <Switch>
           <PrivateRoute path={`${match.url}/`} exact component={Home} />
           <PrivateRoute
-            path={`${match.url}/usermange`}
+            path={`${match.url}/usermanage`}
             exact
             component={UserManage}
           />
