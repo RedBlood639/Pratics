@@ -5,7 +5,10 @@ interface postData {
   password: string;
 }
 
-const SignIn: React.FC<{ Onhandler?: any }> = ({ Onhandler }) => {
+const SignIn: React.FC<{ Onhandler?: any; history?: any }> = ({
+  Onhandler,
+  history,
+}) => {
   const [fields, setFields] = useState<postData>({
     email: "",
     password: "",
@@ -14,6 +17,51 @@ const SignIn: React.FC<{ Onhandler?: any }> = ({ Onhandler }) => {
     email: "",
     password: "",
   });
+
+  const handleValidation = () => {
+    const fieldErrors = {
+      email: "",
+      password: "",
+    };
+    let formIsValid = true;
+    if (!fields["email"]) {
+      formIsValid = false;
+      fieldErrors["email"] = "Email is required";
+    }
+    if (typeof fields["email"] !== "undefined") {
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!emailPattern.test(fields["email"])) {
+        formIsValid = false;
+        fieldErrors["email"] = "Email is not valid";
+      }
+    }
+    //password
+    if (!fields["password"]) {
+      formIsValid = false;
+      fieldErrors["password"] = "Password is required";
+    } else {
+      if (fields["password"].toLocaleLowerCase() === fields["password"]) {
+        formIsValid = false;
+        fieldErrors["password"] =
+          "Password should have more than 1 upper case letter";
+      } else if (fields["password"].length < 8) {
+        formIsValid = false;
+        fieldErrors["password"] = "Password should be more than 8 characters";
+      }
+    }
+    setErrors(fieldErrors);
+    return formIsValid;
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if (handleValidation()) {
+      // submit postData
+      history.push("/dashboard");
+    } else {
+      return false;
+    }
+  };
   return (
     <React.Fragment>
       <form className="form-content">
@@ -37,6 +85,7 @@ const SignIn: React.FC<{ Onhandler?: any }> = ({ Onhandler }) => {
             name="email"
             placeholder="please input your email"
             value={fields.email}
+            onChange={(e) => setFields({ ...fields, email: e.target.value })}
           />
           <p className="label color-danger">{errors.email}</p>
         </div>
@@ -57,11 +106,14 @@ const SignIn: React.FC<{ Onhandler?: any }> = ({ Onhandler }) => {
             name="password"
             placeholder="please input your password"
             value={fields.password}
+            onChange={(e) => setFields({ ...fields, password: e.target.value })}
           />
           <p className="label color-danger">{errors.password}</p>
         </div>
         <div>
-          <button className="font-weight-600 sm-label">Sign In</button>
+          <button className="font-weight-600 sm-label" onClick={handleSubmit}>
+            Sign In
+          </button>
         </div>
       </form>
     </React.Fragment>

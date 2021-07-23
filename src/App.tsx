@@ -7,10 +7,12 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "./pages/PriavteRoute";
 import Loading from "./components/Loading";
+
 // import stylesheets
 import "./assets/scss/app.scss";
-
 const AdminSetup = React.lazy(() => import("./pages/AdminSetup"));
+const UserManage = React.lazy(() => import("./pages/DashBoard"));
+const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 
 const App: React.FC = () => {
   return (
@@ -19,6 +21,9 @@ const App: React.FC = () => {
         <Suspense fallback={<Loading />}>
           <Switch>
             <Route path="/" exact component={AdminSetup} />
+            <Route path="/error" exact component={ErrorPage} />
+            <PrivateRoute path="/dashboard" exact component={UserManage} />
+            <Redirect to="/error" />
           </Switch>
         </Suspense>
       </Router>

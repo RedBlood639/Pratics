@@ -8,7 +8,10 @@ interface postData {
   confirm: string;
 }
 
-const SignUp: React.FC<{ Onhandler?: any }> = ({ Onhandler }) => {
+const SignUp: React.FC<{ Onhandler?: any; history?: any }> = ({
+  Onhandler,
+  history,
+}) => {
   const [fields, setFields] = useState<postData>({
     name: "",
     email: "",
@@ -95,6 +98,7 @@ const SignUp: React.FC<{ Onhandler?: any }> = ({ Onhandler }) => {
     e.preventDefault();
     if (handleValidation()) {
       // submit postData
+      history.push("/dashboard");
     } else {
       return false;
     }

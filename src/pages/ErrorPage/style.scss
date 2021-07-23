@@ -1,0 +1,22 @@
+.e-conainter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  .e-display {
+    width: 50rem;
+    height: 20rem;
+    border: 1px solid var(--color-gray-2);
+    border-radius: 2rem;
+    text-align: center;
+    button {
+      height: 3rem;
+      width: 30%;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer !important;
+      color: var(--color-white);
+      background-color: var(--color-blue-2);
+    }
+  }
+}

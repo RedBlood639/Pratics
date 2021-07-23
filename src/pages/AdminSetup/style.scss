@@ -1,0 +1,13 @@
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  height: 100%;
+  .left-container {
+    background-color: var(--color-orange-1);
+  }
+  .right-container {
+    display: inline-grid;
+    justify-content: center;
+    align-items: center;
+  }
+}

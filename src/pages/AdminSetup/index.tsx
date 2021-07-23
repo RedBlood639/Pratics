@@ -1,17 +1,30 @@
-import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import PrivateRoute from "../PriavteRoute";
+import React, { useState } from "react";
+import SignIn from "../../components/SignIn/Iindex";
+import SignUp from "../../components/SignUp";
+import Forgot from "../../components/Forgot";
+import "./style.scss";
 
-const HomePage = React.lazy(() => import("./Home"));
+const AdminSetup: React.FC<{ history?: any; match?: any }> = ({ history }) => {
+  const [signpage, setSignpage] = useState<number>(0);
 
-const AdminSetup: React.FC<{ match: any }> = ({ match }) => {
+  const handleStateClick = (state: number) => {
+    setSignpage(state);
+  };
   return (
-    <div className="adminsetup-container">
-      <Switch>
-        <Route path={`${match.url}/`} exact component={HomePage} />
-      </Switch>
+    <div className="home-container">
+      <div className="left-container"></div>
+      <div className="right-container">
+        <div className="form-container">
+          {signpage === 0 ? (
+            <SignIn Onhandler={handleStateClick} history={history} />
+          ) : signpage === 1 ? (
+            <SignUp Onhandler={handleStateClick} history={history} />
+          ) : (
+            <Forgot Onhandler={handleStateClick} />
+          )}
+        </div>
+      </div>
     </div>
   );
 };
-
 export default AdminSetup;
