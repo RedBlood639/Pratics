@@ -11,7 +11,7 @@ import Loading from "./components/Loading";
 // import stylesheets
 import "./assets/scss/app.scss";
 const AdminSetup = React.lazy(() => import("./pages/AdminSetup"));
-const UserManage = React.lazy(() => import("./pages/DashBoard"));
+const DashBoard = React.lazy(() => import("./pages/DashBoard"));
 const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 
 const App: React.FC = () => {
@@ -21,8 +21,9 @@ const App: React.FC = () => {
         <Suspense fallback={<Loading />}>
           <Switch>
             <Route path="/" exact component={AdminSetup} />
+            <PrivateRoute path="/dashboard" component={DashBoard} />
+
             <Route path="/error" exact component={ErrorPage} />
-            <PrivateRoute path="/dashboard" exact component={UserManage} />
             <Redirect to="/error" />
           </Switch>
         </Suspense>

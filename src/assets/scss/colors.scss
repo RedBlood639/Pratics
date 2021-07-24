@@ -3,12 +3,16 @@ $color-secondary: #00011d;
 $color-white: #ffffff;
 $color-blue-1: #3699ff;
 $color-blue-2: #007bff;
+$color-blue-3: #c9f7f5;
+$color-blue-4: #1bc5bd;
+$color-blue-5: #ecfffe;
 $color-gray-1: #e1f0ff;
 $color-gray-2: #b5b5c3;
 $color-orange-1: rgb(231, 195, 147);
 $color-danger: rgb(255, 0, 0);
 $color-menu-1: #10889d;
 $color-menu-2: #0f8094;
+
 :root {
   --color-primary: #10889d;
   --color-secondary: #00011d;
@@ -16,6 +20,9 @@ $color-menu-2: #0f8094;
   --color-white: #ffffff;
   --color-blue-1: #3699ff;
   --color-blue-2: #007bff;
+  --color-blue-3: #c9f7f5;
+  --color-blue-4: #1bc5bd;
+  --color-blue-5: #ecfffe;
   --color-gray-1: #e1f0ff;
   --color-gray-2: #b5b5c3;
   --color-orange-1: rgb(231, 195, 147);
@@ -51,6 +58,15 @@ $color-menu-2: #0f8094;
 }
 .color-blue-2 {
   color: $color-blue-2 !important;
+}
+.color-blue-3 {
+  color: $color-blue-3 !important;
+}
+.color-blue-4 {
+  color: $color-blue-4 !important;
+}
+.color-blue-5 {
+  color: $color-blue-5 !important;
 }
 .color-menu-1 {
   color: $color-menu-1 !important;

@@ -1,0 +1,39 @@
+.toolbar-containter {
+  border-radius: 1rem 1rem 0 0;
+  background-color: var(--color-blue-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  .search-group {
+    .search {
+      height: 2rem;
+      border-radius: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--color-blue-3);
+      input {
+        border: transparent;
+        background-color: var(--color-blue-3);
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+  .btngroup {
+    button {
+      height: 2rem;
+      border: transparent;
+      border-radius: 0.3rem;
+      color: var(--color-menu-2);
+      cursor: pointer;
+      background-color: var(--color-blue-3);
+      &:hover {
+        color: var(--color-blue-3);
+        background-color: var(--color-menu-2);
+      }
+    }
+  }
+}

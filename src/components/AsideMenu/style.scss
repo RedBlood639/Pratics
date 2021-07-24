@@ -1,5 +1,6 @@
 .aside-containter {
   height: 100%;
+  position: relative;
   box-shadow: 3px 0 3px 2px rgba(0, 0, 0, 0.2);
   background-color: var(--color-menu-1);
   .menu-title {
@@ -16,21 +17,28 @@
     }
   }
   .menu-content {
-    .menu-section {
-    }
     .menu-items {
-      color: var(--color-gray-1);
-      .menu-item {
-        height: 3rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        &:hover {
-          color: var(--color-white);
-          font-weight: 600;
-          background-color: var(--color-menu-2);
+      .link {
+        text-decoration: none;
+        color: var(--color-white);
+        .menu-item {
+          height: 3rem;
+          display: flex;
+          align-items: center;
+          &:hover {
+            font-weight: 700;
+            background-color: var(--color-menu-2);
+          }
+          .item {
+            padding-left: 1rem;
+          }
         }
       }
+    }
+    .signout {
+      bottom: 1rem;
+      position: absolute;
+      width: 100%;
     }
   }
 }

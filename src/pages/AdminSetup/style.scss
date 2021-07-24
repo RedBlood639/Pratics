@@ -1,11 +1,13 @@
 .home-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  // flex-direction: column;
   height: 100%;
   .left-container {
-    background-color: var(--color-orange-1);
+    width: 40rem;
+    background-color: var(--color-menu-1);
   }
   .right-container {
+    width: 100%;
     display: inline-grid;
     justify-content: center;
     align-items: center;

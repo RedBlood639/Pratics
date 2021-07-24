@@ -1,0 +1,14 @@
+.manage-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .manage-content {
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

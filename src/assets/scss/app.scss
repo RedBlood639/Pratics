@@ -6,13 +6,17 @@
 body::-webkit-scrollbar {
   display: none;
 }
-
+html {
+  font-size: 17px !important;
+  // @media only screen and (max-width: 600px) {
+  //   font-size: 10px !important;
+  // }
+}
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif !important;
-  font-size: 1rem;
 }
 .app-container {
   margin: 0;
