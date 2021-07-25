@@ -1,0 +1,46 @@
+.footer-container {
+  border-radius: 0 0 1rem 1rem;
+  background-color: var(--color-blue-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    button {
+      width: 2rem;
+      height: 2rem;
+      cursor: pointer;
+      border-radius: 50%;
+      text-align: center;
+      border: transparent;
+      color: var(--color-menu-2);
+      background-color: var(--color-blue-3);
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-menu-1);
+      }
+    }
+  }
+  .controller {
+    display: flex;
+    align-items: center;
+    select {
+      height: 2rem;
+      width: 4rem;
+      cursor: pointer;
+      border: transparent;
+      border-radius: 0.3rem;
+      color: var(--color-menu-2);
+      background-color: var(--color-blue-3);
+      &:focus {
+        outline: none;
+      }
+    }
+    .pageState {
+      color: var(--color-blue-3);
+    }
+  }
+}

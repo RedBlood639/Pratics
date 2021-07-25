@@ -1,13 +1,15 @@
 .home-container {
   display: flex;
-  // flex-direction: column;
+  flex-direction: row;
   height: 100%;
   .left-container {
     width: 40rem;
-    background-color: var(--color-menu-1);
+    height: 100%;
+    background-color: var(--color-menu-1) !important;
   }
   .right-container {
     width: 100%;
+    height: 100%;
     display: inline-grid;
     justify-content: center;
     align-items: center;

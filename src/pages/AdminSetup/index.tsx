@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SignIn from "../../components/SignIn/Iindex";
-import SignUp from "../../components/SignUp";
-import Forgot from "../../components/Forgot";
+import SignIn from "../../components/AdminSetup/SignIn/Iindex";
+import SignUp from "../../components/AdminSetup/SignUp";
+import Forgot from "../../components/AdminSetup/Forgot";
 import "./style.scss";
 
 const AdminSetup: React.FC<{ history?: any; match?: any }> = ({ history }) => {

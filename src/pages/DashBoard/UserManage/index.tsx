@@ -1,7 +1,8 @@
 import React from "react";
 
-import UserCard from "../../.../../../components/UserCard";
-import UserToolbar from "../../../components/UserToolbar";
+import UserCard from "../../../components/Dashboard/UserManage/UserCard";
+import UserToolbar from "../../../components/Dashboard/UserManage/UserToolbar";
+import UserFooter from "../../../components/Dashboard/UserManage/UserFooter";
 import "./style.scss";
 
 const UserManage: React.FC = () => {
@@ -10,23 +11,28 @@ const UserManage: React.FC = () => {
       <div className="manage-toolbar">
         <UserToolbar />
       </div>
-      <div className="manage-content pl1 pr1 pt1 mb1 ">
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
+      <div className="manage-body">
+        <div className="manage-content">
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+          <UserCard />
+        </div>
+      </div>
+      <div className="manage-footer">
+        <UserFooter />
       </div>
     </div>
   );

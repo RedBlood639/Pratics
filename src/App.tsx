@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import PrivateRoute from "./pages/PriavteRoute";
-import Loading from "./components/Loading";
+import Loading from "./components/Layout/Loading";
 
 // import stylesheets
 import "./assets/scss/app.scss";

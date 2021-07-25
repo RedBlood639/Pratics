@@ -24,11 +24,6 @@ const AsdieMunu: React.FC<{ history?: any }> = ({ history }) => {
               <span className="item">UserManagement</span>
             </div>
           </Link>
-          <Link className="link" to="#">
-            <div className="menu-item">
-              <span className="item">PromoCode</span>
-            </div>
-          </Link>
         </div>
 
         <div className="menu-items signout">

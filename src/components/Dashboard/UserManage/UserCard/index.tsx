@@ -1,9 +1,9 @@
 import React from "react";
 
 import { FaBars } from "react-icons/fa";
-import FacebookSvg from "../../assets/icons/SVG/FacebookSvg";
-import GoogleSvg from "../../assets/icons/SVG/GoogleSvg";
-import MailSvg from "../../assets/icons/SVG/MailSvg";
+import FacebookSvg from "../../../../assets/icons/SVG/FacebookSvg";
+import GoogleSvg from "../../../../assets/icons/SVG/GoogleSvg";
+import MailSvg from "../../../../assets/icons/SVG/MailSvg";
 import "./style.scss";
 
 const UserCard: React.FC = () => {
@@ -17,7 +17,7 @@ const UserCard: React.FC = () => {
       <div className="card-body">
         <div className="card-header pt1">
           <div className="symbol">
-            <span className="font-weight-600 color-white bg-label">W</span>
+            <span className="font-weight-600 color-white bg-label">WD</span>
           </div>
           <div className="name md-label pt1">
             <span>Wong Dong</span>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SearchSvg from "../../assets/icons/SVG/SearchSvg";
+import SearchSvg from "../../../../assets/icons/SVG/SearchSvg";
 import "./style.scss";
 
 const UserToolbar: React.FC<{ history?: any }> = ({ history }) => {
@@ -13,7 +13,7 @@ const UserToolbar: React.FC<{ history?: any }> = ({ history }) => {
         </div>
       </div>
       <div className="btngroup pr1">
-        <Link to="/">
+        <Link to="/dashboard/adduser">
           <button className="font-weight-600">Add User</button>
         </Link>
       </div>
