@@ -1,0 +1,78 @@
+tr {
+  &:nth-child(odd) {
+    background-color: #fff;
+  }
+  &:nth-child(even) {
+    background-color: #f2f4f4;
+  }
+}
+.usertable-container {
+  width: 100%;
+  height: 100%;
+  .usertable-content {
+    .usertable {
+      width: 100%;
+      box-shadow: 1px 1px #b2babb, -1px 0 1px #b2babb;
+      .usertalbe-header {
+        height: 2rem;
+        text-align: center;
+        color: #34495e;
+        background-color: var(--color-primary);
+      }
+      .usertalbe-body {
+        height: 2rem;
+        font-size: 0.85rem;
+        tr {
+          &:hover {
+            background-color: #eaecee;
+          }
+        }
+      }
+    }
+  }
+}
+.avtions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  button {
+    font-weight: 600;
+    cursor: pointer;
+    border: transparent;
+    padding: 0.4rem;
+  }
+  button[role="edit"] {
+    color: var(--color-primary);
+    background-color: var(--color-gray-1);
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+  button[role="delete"] {
+    color: var(--color-danger);
+    background-color: var(--color-red-1);
+    &:hover {
+      background-color: var(--color-danger);
+      color: var(--color-white);
+    }
+  }
+}
+.state {
+  display: flex;
+  justify-content: center;
+  .offline {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: rgb(85, 85, 95);
+  }
+  .online {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: rgb(22, 190, 22);
+  }
+}

@@ -44,10 +44,13 @@
         align-items: center;
         gap: 0.5rem;
         padding-top: 0.5rem;
-        .online {
+        .offline {
           width: 0.5rem;
           height: 0.5rem;
           border-radius: 50%;
+          background-color: var(--color-gray-2);
+        }
+        .online {
           background-color: green;
         }
       }
@@ -72,19 +75,12 @@
       flex-direction: row;
       gap: 1.5rem;
       justify-content: center;
-      .google {
+      .signtype {
         width: 2rem;
         height: 2rem;
         color: var(--color-gray-2);
       }
-      .facebook {
-        width: 2rem;
-        height: 2rem;
-        color: var(--color-gray-2);
-      }
-      .email {
-        width: 2rem;
-        height: 2rem;
+      .selected {
         color: var(--color-blue-1);
       }
     }

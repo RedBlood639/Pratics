@@ -12,7 +12,7 @@ $color-orange-1: rgb(231, 195, 147);
 $color-danger: rgb(255, 0, 0);
 $color-menu-1: #10889d;
 $color-menu-2: #0f8094;
-
+$color-red-1: #ffe2e5;
 :root {
   --color-primary: #10889d;
   --color-secondary: #00011d;
@@ -28,7 +28,9 @@ $color-menu-2: #0f8094;
   --color-orange-1: rgb(231, 195, 147);
   --color-menu-1: #10889d;
   --color-menu-2: #0f8094;
+  --color-red-1: #ffe2e5;
 }
+
 //
 
 .color-primary {

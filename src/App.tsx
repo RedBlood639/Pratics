@@ -13,7 +13,6 @@ import "./assets/scss/app.scss";
 const AdminSetup = React.lazy(() => import("./pages/AdminSetup"));
 const DashBoard = React.lazy(() => import("./pages/DashBoard"));
 const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
-
 const App: React.FC = () => {
   return (
     <div className="app-container">

@@ -1,63 +1,40 @@
 import React, { useState } from "react";
 import "./style.scss";
-import DoubleBeforeSvg from "../../../../assets/icons/SVG/DoubleBeforeSvg";
 import BeforeSvg from "../../../../assets/icons/SVG/BeforeSvg";
 import NextSvg from "../../../../assets/icons/SVG/NextSvg";
-import DoubleNextSvg from "../../../../assets/icons/SVG/DoubleNextSvg";
+import EllipsSvg from "../../../../assets/icons/SVG/EllipsSvg";
 
-interface Pagination {
-  count: number;
-  currentpage: number;
-  totalpage: number;
-  pagegroup: number[];
-}
+import Pagination from "../Pagination";
 
-interface Record {
-  total: number;
-  current: number;
-}
+const PrevBtn = (props: any) => (
+  <button type="button" {...props}>
+    <BeforeSvg />
+  </button>
+);
+
+const NextBtn = (props: any) => (
+  <button type="button" {...props}>
+    <NextSvg />
+  </button>
+);
+
+const Ellipsis = () => (
+  <button className="ellipsis">
+    <EllipsSvg />
+  </button>
+);
+
 const UserFooter: React.FC = () => {
-  const [paination, setpaination] = useState<Pagination>({
-    count: 5,
-    currentpage: 1,
-    totalpage: 20,
-    pagegroup: [1, 2, 3, 4, 5],
-  });
-
-  const [record, setRecord] = useState<Record>({
-    total: 100,
-    current: 16,
-  });
-  const goToFirstPage = (): void => {
-    console.log(`first`);
-  };
-  const goToPreviousPage = (): void => {
-    console.log(`previous`);
-  };
-  const goToNextPage = (): void => {
-    console.log(`next`);
-  };
-  const goToLastPage = (): void => {
-    console.log(`last`);
-  };
   return (
     <div className="footer-container">
       <div className="pagination ml2">
-        <button>
-          <DoubleBeforeSvg />
-        </button>
-        <button onClick={goToPreviousPage}>
-          <BeforeSvg />
-        </button>
-        {paination.pagegroup.map((item: number) => {
-          return <button key={item}>{item}</button>;
-        })}
-        <button onClick={goToNextPage}>
-          <NextSvg />
-        </button>
-        <button>
-          <DoubleNextSvg />
-        </button>
+        <Pagination
+          activePage={1}
+          page={10}
+          prevBtn={PrevBtn}
+          nextBtn={NextBtn}
+          ellipsis={Ellipsis}
+        />
       </div>
       <div className="controller mr1">
         <div className="pageState mr1 label">
