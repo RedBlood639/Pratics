@@ -1,14 +1,12 @@
 .dashboard {
   height: 100%;
   display: flex;
+  background-color: "#B5B5C3";
   .menu {
-    width: 25rem;
+    width: 20rem;
   }
   .content {
     width: 100%;
-    margin: 0.5rem;
-    border: 1px solid var(--color-menu-2);
-    border-radius: 1rem;
-    background-color: #f4f6f6;
+    background-color: #eff2f5;
   }
 }

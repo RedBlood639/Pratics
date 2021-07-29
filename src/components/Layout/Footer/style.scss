@@ -1,0 +1,19 @@
+.footer-container {
+  background-color: #fff;
+  bottom: 0;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  .footer-left {
+    font-weight: 500 !important;
+    font-size: 0.75rem;
+    .span-1 {
+      color: #a1a5b7 !important;
+      margin-right: 0.25rem;
+    }
+    .span-2 {
+      color: #181c32 !important;
+    }
+  }
+}

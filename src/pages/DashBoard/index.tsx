@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 import PrivateRoute from "../PriavteRoute";
 //import style
 import "./style.scss";
@@ -8,8 +8,8 @@ import "./style.scss";
 import AsdieMunu from "../../components/Layout/AsideMenu";
 //import content component
 const Home = React.lazy(() => import("./Home"));
+// const Footer = React.lazy(() => import("../../components/Layout/Footer"));
 const UserManage = React.lazy(() => import("./UserManage"));
-const AddUser = React.lazy(() => import("./UserManage/AddUser"));
 
 const DashBoard: React.FC<{ history: any; match: any }> = ({ match }) => {
   return (
@@ -18,6 +18,9 @@ const DashBoard: React.FC<{ history: any; match: any }> = ({ match }) => {
         <AsdieMunu />
       </div>
       <div className="content">
+        {/* <div className="heaer">
+          <Header />
+        </div> */}
         <Switch>
           <PrivateRoute path={`${match.url}`} exact component={Home} />
           <PrivateRoute
@@ -27,6 +30,9 @@ const DashBoard: React.FC<{ history: any; match: any }> = ({ match }) => {
           />
           <Redirect to="/error" />
         </Switch>
+        {/* <div className="footer">
+          <Footer />
+        </div> */}
       </div>
     </div>
   );

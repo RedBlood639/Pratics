@@ -1,78 +1,127 @@
-tr {
-  &:nth-child(odd) {
-    background-color: #fff;
-  }
-  &:nth-child(even) {
-    background-color: #f2f4f4;
-  }
-}
 .usertable-container {
+  button {
+    font-weight: 600;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: transparent;
+  }
   width: 100%;
   height: 100%;
-  .usertable-content {
-    .usertable {
-      width: 100%;
-      box-shadow: 1px 1px #b2babb, -1px 0 1px #b2babb;
-      .usertalbe-header {
-        height: 2rem;
-        text-align: center;
-        color: #34495e;
-        background-color: var(--color-primary);
+  .usertable-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .searchbox {
+      border-radius: 0.3rem;
+      background-color: #eef3f7;
+      margin-left: 0.5rem;
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+      svg {
+        padding: 0 0.5rem;
       }
-      .usertalbe-body {
-        height: 2rem;
-        font-size: 0.85rem;
-        tr {
-          &:hover {
-            background-color: #eaecee;
-          }
+      input {
+        background-color: inherit;
+        margin-right: 0.5rem;
+        height: 60%;
+        border: transparent;
+        &:focus {
+          outline: transparent;
+        }
+      }
+      // .dropdown {
+      //   position: absolute;
+
+      // }
+    }
+    .btn-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-right: 3rem;
+
+      button[role="filter"] {
+        background-color: #f1faff;
+        color: #009ef7;
+        &:hover {
+          background-color: #009ef7;
+          color: #f1faff;
+        }
+      }
+      button[role="adduser"] {
+        background-color: #009ef7;
+        color: #f1faff;
+        &:hover {
+          background-color: #f1faff;
+          color: #009ef7;
         }
       }
     }
   }
-}
-.avtions {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  button {
-    font-weight: 600;
-    cursor: pointer;
-    border: transparent;
-    padding: 0.4rem;
-  }
-  button[role="edit"] {
-    color: var(--color-primary);
-    background-color: var(--color-gray-1);
-    &:hover {
-      background-color: var(--color-primary);
-      color: var(--color-white);
+  .usertable-content {
+    td {
+      border-bottom: 1px dotted #bbbdc5;
+      height: 2rem;
+      padding: 0.3rem 0;
     }
-  }
-  button[role="delete"] {
-    color: var(--color-danger);
-    background-color: var(--color-red-1);
-    &:hover {
-      background-color: var(--color-danger);
-      color: var(--color-white);
+    .usertable {
+      font-size: 0.8rem;
+      color: #a1a5b7 !important;
+      width: 100% !important;
+      clear: both;
+      margin-top: 6px !important;
+      margin-bottom: 6px !important;
+      max-width: none !important;
+      .selectbox {
+        text-align: center;
+      }
+      tbody {
+        .userfield {
+          display: flex;
+          gap: 0.9rem;
+          align-items: center;
+          .avatar {
+            display: flex;
+            align-items: center;
+            img {
+              border-radius: 50%;
+              width: 3rem;
+              height: 3rem;
+            }
+            .symbol {
+              background-color: var(--color-blue-1);
+              border-radius: 50%;
+              width: 3rem;
+              height: 3rem;
+              text-align: center;
+              span {
+                line-height: 3rem;
+              }
+            }
+          }
+          .userinfo {
+            gap: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            .sp-name {
+              color: black;
+            }
+          }
+        }
+        .actions {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          background-color: #f1faff;
+          color: #7e8299;
+          &:hover {
+            color: #009ef7;
+          }
+        }
+      }
     }
-  }
-}
-.state {
-  display: flex;
-  justify-content: center;
-  .offline {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background-color: rgb(85, 85, 95);
-  }
-  .online {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background-color: rgb(22, 190, 22);
   }
 }

@@ -3,6 +3,8 @@ export interface m_user {
   signtype: string;
   name: string;
   email: string;
+  role: string;
+  photoURL: string;
   created_on: string;
   remove_on: string;
 }

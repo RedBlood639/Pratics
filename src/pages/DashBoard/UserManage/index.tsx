@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
-
-// import UserCard from "../../../components/Dashboard/UserManage/UserCard";
-import UserToolbar from "../../../components/Dashboard/UserManage/UserToolbar";
 import UserTable from "../../../components/Dashboard/UserManage/UserTable";
-// import UserFooter from "../../../components/Dashboard/UserManage/UserFooter";
-import "./style.scss";
-//
 import apiClient from "../../../components/apiClient";
 import * as dotenv from "dotenv";
 import { m_user } from "../../../types";
+import "./style.scss";
 dotenv.config();
 const UserManage: React.FC = () => {
   const [users, setUsers] = useState<m_user[]>([]);
@@ -25,9 +20,6 @@ const UserManage: React.FC = () => {
   }, []);
   return (
     <div className="manage-container">
-      <div className="manage-toolbar">
-        <UserToolbar />
-      </div>
       <div className="manage-body">
         <div className="manage-content">
           <UserTable items={users} />
