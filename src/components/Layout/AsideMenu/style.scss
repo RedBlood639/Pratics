@@ -3,6 +3,7 @@
   position: relative;
   box-shadow: 3px 0 3px 2px rgba(0, 0, 0, 0.2);
   background-color: var(--color-menu-1);
+  overflow-y: auto;
   .menu-title {
     height: 4rem;
     background-color: var(--color-menu-2);

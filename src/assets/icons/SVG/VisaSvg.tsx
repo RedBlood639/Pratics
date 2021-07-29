@@ -1,0 +1,34 @@
+import React from "react";
+
+const VisaSvg: React.FC = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width="31"
+      height="20"
+      viewBox="0 0 31 20"
+    >
+      <g id="Visa" transform="translate(-0.5 0.013)">
+        <rect
+          id="Visa-2"
+          data-name="Visa"
+          width="31"
+          height="20"
+          rx="2"
+          transform="translate(0.5 -0.013)"
+          fill="#fff"
+        />
+        <image
+          id="visa-logo"
+          width="20.568"
+          height="6.856"
+          transform="translate(5.5 5.988)"
+          xlinkHref="data:image/png;base64,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"
+        />
+      </g>
+    </svg>
+  );
+};
+
+export default VisaSvg;

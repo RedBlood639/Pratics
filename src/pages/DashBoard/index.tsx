@@ -25,11 +25,6 @@ const DashBoard: React.FC<{ history: any; match: any }> = ({ match }) => {
             exact
             component={UserManage}
           />
-          <PrivateRoute
-            path={`${match.url}/adduser`}
-            exact
-            component={AddUser}
-          />
           <Redirect to="/error" />
         </Switch>
       </div>

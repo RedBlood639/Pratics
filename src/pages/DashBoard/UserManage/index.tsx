@@ -20,7 +20,7 @@ const UserManage: React.FC = () => {
         setUsers(res.data.items);
       })
       .catch((e) => {
-        console.log(e.response.data.message);
+        console.log("something went wrong");
       });
   }, []);
   return (
@@ -30,16 +30,9 @@ const UserManage: React.FC = () => {
       </div>
       <div className="manage-body">
         <div className="manage-content">
-          {/* {users.map((item: m_user) => (
-            <UserCard key={item.id} item={item} />
-          ))} */}
-
           <UserTable items={users} />
         </div>
       </div>
-      {/* <div className="manage-footer">
-        <UserFooter />
-      </div> */}
     </div>
   );
 };
