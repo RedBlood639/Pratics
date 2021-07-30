@@ -1,6 +1,12 @@
 .pagination {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  .total {
+    font-size: 0.7rem;
+    margin-right: 1rem;
+    color: #a1a5b7;
+  }
   .btn-page {
     display: flex;
     margin: 0 0.1rem;

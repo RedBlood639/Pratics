@@ -14,6 +14,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 1rem;
     .searchbox {
       border-radius: 0.3rem;
       background-color: #eef3f7;
@@ -33,10 +34,6 @@
           outline: transparent;
         }
       }
-      // .dropdown {
-      //   position: absolute;
-
-      // }
     }
     .btn-group {
       display: flex;
@@ -72,10 +69,10 @@
       color: #a1a5b7 !important;
       width: 100% !important;
       clear: both;
-      margin-top: 6px !important;
-      margin-bottom: 6px !important;
+      margin-bottom: 0.7rem !important;
       max-width: none !important;
       .selectbox {
+        padding: 0 0.5rem;
         text-align: center;
       }
       tbody {
@@ -121,6 +118,38 @@
             color: #009ef7;
           }
         }
+      }
+      .dropdownlist {
+        border-radius: 0.5rem;
+        height: 100%;
+        padding: 0.2rem;
+        position: fixed;
+        width: 6rem;
+        height: 4rem;
+        background-color: white;
+        box-shadow: 3px 3px 3px 1px #e3f0f7, -3px -1px 3px 1px #e3f0f7;
+        div {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 0.2rem;
+          z-index: 105;
+          button {
+            background-color: white;
+            color: #7e8299;
+            &:hover {
+              background-color: #f1faff;
+              color: #009ef7;
+            }
+          }
+        }
+      }
+      .active {
+        display: block;
+      }
+      .inactive {
+        display: none;
       }
     }
   }

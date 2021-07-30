@@ -9,22 +9,26 @@ function* range(start: number, end: number) {
 
 const Pagination: React.FC<{
   activePage: number;
-  page: number;
-  prevBtn: any;
-  nextBtn: any;
-  ellipsis: any;
+  pagecount: number;
+  totalcount?: number;
+  prevBtn?: any;
+  nextBtn?: any;
+  ellipsis?: any;
+  handlePage?: any;
 }> = ({
-  page,
-  activePage: initialActivePage,
+  activePage,
+  pagecount,
+  totalcount,
   prevBtn: PrevBtn,
   nextBtn: NextBtn,
   ellipsis: Ellipsis,
+  handlePage,
 }) => {
-  const [activePage, setActivePage] = useState(initialActivePage);
+  // const [activePage, handlePage] = useState(initialActivePage);
 
   const generatePages = () => {
-    if (page <= 6) {
-      const pages = Array.from(range(1, page + 1));
+    if (pagecount <= 6) {
+      const pages = Array.from(range(1, pagecount + 1));
       return pages.map((page) => (
         <button
           type="button"
@@ -32,7 +36,7 @@ const Pagination: React.FC<{
           className={page === activePage ? "is-active" : ""}
           onClick={(e: any) => {
             e.target.focus();
-            setActivePage(page);
+            handlePage(page);
           }}
         >
           {page}
@@ -40,8 +44,8 @@ const Pagination: React.FC<{
       ));
     }
 
-    if (page - activePage <= 4) {
-      const first = Array.from(range(page - 4, page + 1));
+    if (pagecount - activePage <= 4) {
+      const first = Array.from(range(pagecount - 4, pagecount + 1));
 
       return (
         <>
@@ -53,7 +57,7 @@ const Pagination: React.FC<{
               className={page === activePage ? "is-active" : ""}
               onClick={(e: any) => {
                 e.target.focus();
-                setActivePage(page);
+                handlePage(page);
               }}
             >
               {page}
@@ -66,7 +70,7 @@ const Pagination: React.FC<{
         activePage === 1
           ? Array.from(range(activePage, activePage + 3))
           : Array.from(range(activePage - 1, activePage + 2));
-      const end = Array.from(range(page - 1, page + 1));
+      const end = Array.from(range(pagecount - 1, pagecount + 1));
 
       return (
         <>
@@ -77,7 +81,7 @@ const Pagination: React.FC<{
               className={page === activePage ? "is-active" : ""}
               onClick={(e: any) => {
                 e.target.focus();
-                setActivePage(page);
+                handlePage(page);
               }}
             >
               {page}
@@ -91,7 +95,7 @@ const Pagination: React.FC<{
               className={page === activePage ? "is-active" : ""}
               onClick={(e: any) => {
                 e.target.focus();
-                setActivePage(page);
+                handlePage(page);
               }}
             >
               {page}
@@ -101,20 +105,20 @@ const Pagination: React.FC<{
       );
     }
   };
-
   return (
     <div className="pagination">
+      <section className="total">{`Count ${totalcount}`}</section>
       <section className="btn-page">
         <PrevBtn
           disabled={activePage === 1}
-          onClick={() => setActivePage(activePage - 1)}
+          onClick={() => handlePage(activePage - 1)}
         />
       </section>
       <section className="btn-page">{generatePages()}</section>
       <section className="btn-page">
         <NextBtn
-          disabled={activePage === page}
-          onClick={() => setActivePage(activePage + 1)}
+          disabled={activePage === pagecount}
+          onClick={() => handlePage(activePage + 1)}
         />
       </section>
     </div>

@@ -7,7 +7,7 @@ const apiClient = axios.create({
   responseType: "json",
   headers: {
     "Content-Type": "application/json",
-    Authorization: localStorage.getItem("mindmailtoken"),
+    Authorization: localStorage.getItem("mindmail_admin_token"),
   },
 });
 

@@ -1,4 +1,4 @@
-export interface m_user {
+export interface t_user {
   id: number;
   signtype: string;
   name: string;
@@ -8,9 +8,17 @@ export interface m_user {
   created_on: string;
   remove_on: string;
 }
-export interface chatbuddy {
+export interface t_chatbuddy {
   id: number;
   photoURL: string;
+}
+
+export interface t_pageproperty {
+  pagecount: number;
+  perpage: number;
+  totalcount: number;
+  currentpage: number;
+  search: string;
 }
 
 export const CountryItems = [

@@ -28,13 +28,14 @@ const UserFooter: React.FC = () => {
   return (
     <div className="footer-container">
       <div className="pagination ml2">
-        <Pagination
+        {/* <Pagination
           activePage={1}
-          page={10}
+          pagecount={page?.pagecount}
+          totalcount={page?.totalcount}
           prevBtn={PrevBtn}
           nextBtn={NextBtn}
           ellipsis={Ellipsis}
-        />
+        /> */}
       </div>
       <div className="controller mr1">
         <div className="pageState mr1 label">
