@@ -1,16 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
-import { t_user } from "../../../../types";
-import Pagination from "../Pagination";
-
 import SearchSvg from "../../../../assets/icons/SVG/SearchSvg";
 import DownarrowSvg from "../../../../assets/icons/SVG/DownarrowSvg";
 import AddSvg from "../../../../assets/icons/SVG/AddSvg";
 import BeforeSvg from "../../../../assets/icons/SVG/BeforeSvg";
 import EllipsSvg from "../../../../assets/icons/SVG/EllipsSvg";
 import NextSvg from "../../../../assets/icons/SVG/NextSvg";
+import { t_user } from "../../../../types";
+
+import { Modal } from "react-bootstrap";
+import Pagination from "../Pagination";
 import "./style.scss";
 //import material
-
 const PrevBtn = (props: any) => (
   <button type="button" {...props}>
     <BeforeSvg />
@@ -31,6 +31,14 @@ const Ellipsis = () => (
 const SelectBtn: React.FC = () => {
   const [isdrop, setIsdrop] = useState<boolean>(false);
   const dropMenuRef = useRef<HTMLInputElement>(null);
+  const [isshow, setIsshow] = useState<boolean>(false);
+
+  const handleDiscard = () => {
+    setIsshow(false);
+  };
+  const handleSubmit = () => {
+    setIsshow(false);
+  };
 
   const handleClickOutside = (e: any) => {
     if (dropMenuRef.current && dropMenuRef.current.contains(e.target)) {
@@ -63,10 +71,65 @@ const SelectBtn: React.FC = () => {
         ref={dropMenuRef}
       >
         <div>
-          <button>Edit</button>
+          <button onClick={() => setIsshow(true)}>Edit</button>
           <button>Delete</button>
         </div>
       </div>
+
+      <Modal
+        show={isshow}
+        onHide={setIsshow}
+        centered
+        aria-labelledby="contained-modal-title-vcenter"
+      >
+        <Modal.Header>
+          <span>Add User</span>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="div-avatar">
+            <img src="https://pickaface.net/gallery/avatar/unr_mimmo_161019_2354_2o1nnrd.png" />
+          </div>
+          <div className="div-userinfo">
+            <div className="div-name">
+              <p>Full Name</p>
+              <input type="text" />
+            </div>
+            <div className="div-email">
+              <p>Email</p>
+              <input type="text" />
+            </div>
+          </div>
+          <p>Role</p>
+          <div className="div-role">
+            <div className="div-checkbox">
+              <input type="radio" name="role" />
+              <div>
+                <span className="span-1">Administrator</span>
+                <span className="span-2">
+                  Best for business owners and company administrators
+                </span>
+              </div>
+            </div>
+            <div className="div-checkbox">
+              <input type="radio" name="role" />
+              <div>
+                <span className="span-1">Customer</span>
+                <span className="span-2">
+                  Best for business owners and company customer
+                </span>
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button role="discard" onClick={handleDiscard}>
+            Discard
+          </button>
+          <button role="submit" onClick={handleSubmit}>
+            Submit
+          </button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
@@ -77,10 +140,6 @@ const UserTable: React.FC<{
   handleSearch?: any;
   handlePage?: any;
 }> = ({ items, page, handleSearch, handlePage }) => {
-  const [isshow, setIsshow] = useState<boolean>(false);
-  const handleCloseModal = (e: any) => {
-    setIsshow(false);
-  };
   return (
     <div className="usertable-container">
       <div className="usertable-header">
@@ -91,11 +150,6 @@ const UserTable: React.FC<{
             placeholder="Search..."
             onChange={(e) => handleSearch(e.target.value)}
           />
-        </div>
-        <div className="btn-group">
-          <button role="adduser" onClick={() => setIsshow(!isshow)}>
-            <AddSvg /> <span>Add User</span>
-          </button>
         </div>
       </div>
       <br />
@@ -167,7 +221,6 @@ const UserTable: React.FC<{
           ellipsis={Ellipsis}
         />
       </div>
-      {/*  */}
     </div>
   );
 };

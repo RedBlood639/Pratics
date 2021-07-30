@@ -9,7 +9,9 @@ import PrivateRoute from "./pages/PriavteRoute";
 import Loading from "./components/Layout/Loading";
 
 // import stylesheets
+import "bootstrap/dist/css/bootstrap.css";
 import "./assets/scss/app.scss";
+
 const AdminSetup = React.lazy(() => import("./pages/AdminSetup"));
 const DashBoard = React.lazy(() => import("./pages/DashBoard"));
 const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
