@@ -113,60 +113,63 @@ const SelectBtn: React.FC<{ item: any }> = ({ item }) => {
           <span>Edit User</span>
         </Modal.Header>
         <Modal.Body>
-          <div className="div-avatar">
-            {item.photoURL ? (
-              <img src={item.photoURL} alt="avatar" />
-            ) : (
-              <div className="symbol">
-                <span className="color-white large-label">
-                  {item.name.indexOf(" ") === -1
-                    ? item.name[0].toUpperCase()
-                    : item.name[0].toUpperCase() +
-                      item.name[item.name.indexOf(" ") + 1].toUpperCase()}
-                </span>
+          <div className="div-user">
+            <div className="div-avatar">
+              {item.photoURL ? (
+                <img src={item.photoURL} alt="avatar" />
+              ) : (
+                <div className="symbol">
+                  <span className="color-white large-label">
+                    {item.name.indexOf(" ") === -1
+                      ? item.name[0].toUpperCase()
+                      : item.name[0].toUpperCase() +
+                        item.name[item.name.indexOf(" ") + 1].toUpperCase()}
+                  </span>
+                </div>
+              )}
+            </div>
+            <div className="div-userinfo">
+              <div className="div-name">
+                <p>Full Name</p>
+                <input type="text" value={item.name} disabled />
               </div>
-            )}
-          </div>
-          <div className="div-userinfo">
-            <div className="div-name">
-              <p>Full Name</p>
-              <input type="text" value={item.name} disabled />
-            </div>
-            <div className="div-email">
-              <p>Email</p>
-              <input type="text" value={item.email} disabled />
-            </div>
-          </div>
-          <p>Role</p>
-          <div className="div-role">
-            <div className="div-checkbox">
-              <input
-                type="radio"
-                name="role"
-                checked={isRole === "Admin" ? true : false}
-                onChange={() => setIsRole("Admin")}
-                // defaultChecked={true}
-              />
-              <div>
-                <span className="span-1">Administrator</span>
-                <span className="span-2">
-                  Best for business owners and company administrators
-                </span>
+              <div className="div-email">
+                <p>Email</p>
+                <input type="text" value={item.email} disabled />
               </div>
             </div>
-            <div className="div-checkbox">
-              <input
-                type="radio"
-                name="role"
-                // defaultChecked={false}
-                checked={isRole === "Admin" ? false : true}
-                onChange={() => setIsRole("Common")}
-              />
-              <div>
-                <span className="span-1">Customer</span>
-                <span className="span-2">
-                  Best for business owners and company customer
-                </span>
+
+            <p>Role</p>
+            <div className="div-role">
+              <div className="div-checkbox">
+                <input
+                  type="radio"
+                  name="role"
+                  checked={isRole === "Admin" ? true : false}
+                  onChange={() => setIsRole("Admin")}
+                  // defaultChecked={true}
+                />
+                <div>
+                  <span className="span-1">Administrator</span>
+                  <span className="span-2">
+                    Best for business owners and company administrators
+                  </span>
+                </div>
+              </div>
+              <div className="div-checkbox">
+                <input
+                  type="radio"
+                  name="role"
+                  // defaultChecked={false}
+                  checked={isRole === "Admin" ? false : true}
+                  onChange={() => setIsRole("Common")}
+                />
+                <div>
+                  <span className="span-1">Customer</span>
+                  <span className="span-2">
+                    Best for business owners and company customer
+                  </span>
+                </div>
               </div>
             </div>
           </div>

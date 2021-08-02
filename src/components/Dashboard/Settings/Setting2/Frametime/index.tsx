@@ -142,32 +142,34 @@ const Frametime: React.FC = () => {
           <span>{`${selected.id === 0 ? "Add" : "Edit"} FrameTime`}</span>
         </Modal.Header>
         <Modal.Body>
-          <div className="frametimefield">
-            <div>
-              <p>{"FrameTime :"}</p>
-              <div className="frametimeinput">
-                <input
-                  type="text"
-                  value={selected.time}
-                  onChange={(e) => handletime(e.target.value)}
-                />
-                <select
-                  value={selected.type}
-                  onChange={(e) => handletype(e.target.value)}
-                >
-                  <option value="s">(s)</option>
-                  <option value="m">(m)</option>
-                </select>
+          <div className="frametimemodal">
+            <div className="frametimefield">
+              <div>
+                <p>{"FrameTime :"}</p>
+                <div className="frametimeinput">
+                  <input
+                    type="text"
+                    value={selected.time}
+                    onChange={(e) => handletime(e.target.value)}
+                  />
+                  <select
+                    value={selected.type}
+                    onChange={(e) => handletype(e.target.value)}
+                  >
+                    <option value="s">(s)</option>
+                    <option value="m">(m)</option>
+                  </select>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="defaultfield">
-            <p>{"Default :"}</p>
-            <input
-              type="checkbox"
-              checked={selected.defined === 1 ? true : false}
-              onChange={(e) => handleDefault(e.target.checked)}
-            />
+            <div className="defaultfield">
+              <p>{"Default :"}</p>
+              <input
+                type="checkbox"
+                checked={selected.defined === 1 ? true : false}
+                onChange={(e) => handleDefault(e.target.checked)}
+              />
+            </div>
           </div>
         </Modal.Body>
         <Modal.Footer>

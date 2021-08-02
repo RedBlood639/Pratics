@@ -58,52 +58,44 @@ button {
 .modal {
   .modal-dialog {
     .modal-content {
-      p {
-        margin: 0 0 0.3rem 0;
-        font-size: 0.8rem;
-        color: #181c32;
-      }
-      .modal-header {
-        font-weight: 500;
-        font-size: 1rem;
-      }
       .modal-body {
-        display: flex;
-        justify-content: space-between;
-        .frametimefield {
-          width: 10rem;
-          .frametimeinput {
-            height: 2rem;
-            border: 1px solid #abb2b9;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            input,
-            select {
-              text-align: right;
-              border: transparent;
-              height: 100%;
-              &:focus {
-                outline: transparent;
+        .frametimemodal {
+          display: flex;
+          justify-content: space-between;
+          .frametimefield {
+            width: 10rem;
+            .frametimeinput {
+              height: 2rem;
+              border: 1px solid #abb2b9;
+              border-radius: 0.5rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              input,
+              select {
+                text-align: right;
+                border: transparent;
+                height: 100%;
+                &:focus {
+                  outline: transparent;
+                }
+              }
+              input {
+                width: 100%;
               }
             }
-            input {
-              width: 100%;
-            }
           }
-        }
-        .defaultfield {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          input {
-            height: 100%;
+          .defaultfield {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            input {
+              height: 100%;
+            }
           }
         }
       }
       .modal-footer {
-        text-align: center;
         button[role="discard"] {
           background-color: #f1faff;
           color: #009ef7;

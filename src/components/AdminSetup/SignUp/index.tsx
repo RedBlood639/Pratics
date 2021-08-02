@@ -104,78 +104,76 @@ const SignUp: React.FC<{ Onhandler?: any; history?: any }> = ({
     }
   };
   return (
-    <React.Fragment>
-      <form className="signup-content">
-        <div>
-          <p className="bg-label color-primary font-weight-700">Sign Up</p>
-          <span className="sm-label color-gray-2">
-            Enter your details to create your account?
-          </span>
-        </div>
-        <div className="pt3">
-          <input
-            type="text"
-            name="name"
-            placeholder="please input your name"
-            value={fields.name}
-            onChange={(e) =>
-              setFields({
-                ...fields,
-                name: e.target.value.replace(/\s\s+/g, " "),
-              })
-            }
-          />
-          <p className="label color-danger">{errors.name}</p>
-        </div>
-        <div>
-          <input
-            type="email"
-            name="email"
-            placeholder="please input your email"
-            value={fields.email}
-            onChange={(e) => setFields({ ...fields, email: e.target.value })}
-          />
-          <p className="label color-danger">{errors.email}</p>
-        </div>
-        <div>
-          <input
-            type="password"
-            name="password"
-            placeholder="please input your password"
-            value={fields.password}
-            onChange={(e) => setFields({ ...fields, password: e.target.value })}
-          />
-          <p className="label color-danger">{errors.password}</p>
-        </div>
-        <div>
-          <input
-            type="password"
-            name="confirm"
-            placeholder="please confirm your password"
-            value={fields.confirm}
-            onChange={(e) => setFields({ ...fields, confirm: e.target.value })}
-          />
-          <p className="label color-danger">{errors.confirm}</p>
-        </div>
+    <form className="signup-content">
+      <div>
+        <p className="bg-label color-primary font-weight-700">Sign Up</p>
+        <span className="sm-label color-gray-2">
+          Enter your details to create your account?
+        </span>
+      </div>
+      <div className="pt3">
+        <input
+          type="text"
+          name="name"
+          placeholder="please input your name"
+          value={fields.name}
+          onChange={(e) =>
+            setFields({
+              ...fields,
+              name: e.target.value.replace(/\s\s+/g, " "),
+            })
+          }
+        />
+        <p className="label color-danger">{errors.name}</p>
+      </div>
+      <div>
+        <input
+          type="email"
+          name="email"
+          placeholder="please input your email"
+          value={fields.email}
+          onChange={(e) => setFields({ ...fields, email: e.target.value })}
+        />
+        <p className="label color-danger">{errors.email}</p>
+      </div>
+      <div>
+        <input
+          type="password"
+          name="password"
+          placeholder="please input your password"
+          value={fields.password}
+          onChange={(e) => setFields({ ...fields, password: e.target.value })}
+        />
+        <p className="label color-danger">{errors.password}</p>
+      </div>
+      <div>
+        <input
+          type="password"
+          name="confirm"
+          placeholder="please confirm your password"
+          value={fields.confirm}
+          onChange={(e) => setFields({ ...fields, confirm: e.target.value })}
+        />
+        <p className="label color-danger">{errors.confirm}</p>
+      </div>
 
-        <div className="mt2 signup-footer">
-          <button
-            role="signup"
-            className="font-weight-600 sm-label mr1"
-            onClick={handleSubmit}
-          >
-            Sign Up
-          </button>
-          <button
-            role="cancel"
-            className="font-weight-600 sm-label"
-            onClick={() => Onhandler(0)}
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
-    </React.Fragment>
+      <div className="mt2 signup-footer">
+        <button
+          role="signup"
+          className="font-weight-600 sm-label mr1"
+          onClick={handleSubmit}
+        >
+          Sign Up
+        </button>
+        <button
+          role="cancel"
+          className="font-weight-600 sm-label"
+          onClick={() => Onhandler(0)}
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
   );
 };
 

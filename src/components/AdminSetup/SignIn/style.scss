@@ -28,6 +28,7 @@
     height: 3rem;
     width: 30%;
     border: none;
+    display: block !important;
     border-radius: 0.5rem;
     color: var(--color-white);
     background-color: var(--color-blue-1);
@@ -36,7 +37,6 @@
       background-color: var(--color-blue-2);
     }
   }
-
   .forget {
     display: flex;
     justify-content: space-between;

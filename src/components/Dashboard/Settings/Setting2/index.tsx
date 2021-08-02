@@ -44,12 +44,12 @@ const Setting2: React.FC = () => {
   }, [musictypeState]);
 
   useEffect(() => {
-    console.log(musicState);
     setMusic(musicState);
   }, [musicState]);
 
   const handleSelectType = (id: number) => {
     setSelectedTypeId(id);
+    dispatch(GetMusic(id));
   };
 
   const handleSubmitType = () => {
@@ -65,7 +65,7 @@ const Setting2: React.FC = () => {
       apiClient
         .post("/admin/addmusictype", editType)
         .then((res) => {
-          // dispatch(UpdateMusciType(editType));
+          dispatch(GetMusicType());
           setIsshow(false);
         })
         .catch((e) => console.log(e));
@@ -86,7 +86,7 @@ const Setting2: React.FC = () => {
     setIsshow(true);
   };
   return (
-    <div className="seeting2">
+    <>
       <div className="setting2-container">
         <div className="sub-container">
           <div className="sub-body">
@@ -125,9 +125,7 @@ const Setting2: React.FC = () => {
             <div className="music-container">
               <div className="sub-header">
                 <span>Music</span>
-                <div>
-                  <AddSvg />
-                </div>
+                <div>{musictypelist.length === 0 ? "" : <AddSvg />}</div>
               </div>
               <div className="sub-content">
                 {music.map((item: any, index: number) => (
@@ -157,14 +155,15 @@ const Setting2: React.FC = () => {
         size="sm"
         aria-labelledby="contained-modal-title-vcenter"
       >
-        <Modal.Header>{`${
-          editType.id === 0 ? "Add" : "Edit"
-        } MusicType`}</Modal.Header>
+        <Modal.Header>
+          <span>{`${editType.id === 0 ? "Add" : "Edit"} MusicType`}</span>
+        </Modal.Header>
         <Modal.Body>
-          <div className="musictype-modal-body pt1">
+          <div className="musictype-modal">
             <p>MusicType :</p>
             <input
               type="text"
+              className="mb1"
               placeholder="Input MusicType"
               value={editType.musictype}
               onChange={(e) =>
@@ -182,7 +181,7 @@ const Setting2: React.FC = () => {
           </button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 };
 
