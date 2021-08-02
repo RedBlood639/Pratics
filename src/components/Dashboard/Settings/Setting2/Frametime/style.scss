@@ -12,7 +12,9 @@ button {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding: 0.5rem;
   .frametime-header {
+    border-bottom: 1px solid var(--color-primary);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,6 +62,11 @@ button {
     .modal-content {
       .modal-body {
         .frametimemodal {
+          p {
+            margin: 1rem 0 0.3rem 0;
+            font-size: 0.8rem;
+            color: #181c32;
+          }
           display: flex;
           justify-content: space-between;
           .frametimefield {

@@ -22,7 +22,7 @@ const Setting2: React.FC = () => {
   const dispatch = useDispatch();
   const [musictypelist, setMusictypelist] = useState([]);
   const [music, setMusic] = useState([]);
-  const [isshow, setIsshow] = useState<boolean>(false);
+  const [showMusicType, setShowMusicType] = useState<boolean>(false);
   const [selectedtypeId, setSelectedTypeId] = useState<number>(0);
   const [editType, setEditType] = useState(initialType);
   const musictypeState = useSelector(
@@ -58,7 +58,7 @@ const Setting2: React.FC = () => {
         .put("/admin/updatemusictype", editType)
         .then((res) => {
           dispatch(UpdateMusciType(editType));
-          setIsshow(false);
+          setShowMusicType(false);
         })
         .catch((e) => console.log(e));
     } else {
@@ -66,7 +66,7 @@ const Setting2: React.FC = () => {
         .post("/admin/addmusictype", editType)
         .then((res) => {
           dispatch(GetMusicType());
-          setIsshow(false);
+          setShowMusicType(false);
         })
         .catch((e) => console.log(e));
     }
@@ -74,16 +74,16 @@ const Setting2: React.FC = () => {
 
   const handleDiscordType = () => {
     setEditType(initialType);
-    setIsshow(false);
+    setShowMusicType(false);
   };
   const handleEditType = (item: any) => {
-    setIsshow(true);
+    setShowMusicType(true);
     setEditType(item);
   };
 
   const handleAddType = () => {
     setEditType(initialType);
-    setIsshow(true);
+    setShowMusicType(true);
   };
   return (
     <>
@@ -127,18 +127,24 @@ const Setting2: React.FC = () => {
                 <span>Music</span>
                 <div>{musictypelist.length === 0 ? "" : <AddSvg />}</div>
               </div>
-              <div className="sub-content">
-                {music.map((item: any, index: number) => (
-                  <div key={item.id} className="pt1 sub-content-1">
-                    <div>{index + 1}</div>
-                    <div>{item.musicname}</div>
-                    <div>{item.musicURL}</div>
-                    <div>{item.musictime}</div>
-                    <a className="edit" href="#">
-                      Edit
-                    </a>
-                  </div>
-                ))}
+              <div className="sub-content music-with">
+                <table>
+                  <tbody>
+                    {music.map((item: any, index: number) => (
+                      <tr key={item.id}>
+                        <td>{index + 1}</td>
+                        <td>{item.musicname}</td>
+                        <td>{item.musicURL}</td>
+                        <td>{item.musictime}</td>
+                        <td>
+                          <a className="edit" href="#">
+                            Edit
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -149,8 +155,8 @@ const Setting2: React.FC = () => {
       </div>
       <Modal
         animation={false}
-        show={isshow}
-        onHide={setIsshow}
+        show={showMusicType}
+        onHide={setShowMusicType}
         centered
         size="sm"
         aria-labelledby="contained-modal-title-vcenter"

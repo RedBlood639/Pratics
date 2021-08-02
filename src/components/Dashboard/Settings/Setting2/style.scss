@@ -11,24 +11,19 @@
     .sub-body {
       display: grid;
       grid-template-columns: 1fr 2fr;
-      gap: 0.5rem;
       .musictype-container {
         width: 100%;
-        border-radius: 0.2rem;
-        border: 1px solid #cacfd2;
-        border-bottom: none;
-        padding: 0.5rem;
+        border-right: 1px solid #cacfd2;
+        padding: 0.5rem 1rem;
       }
       .music-container {
         width: 100%;
-        border-radius: 0.2rem;
-        border: 1px solid #cacfd2;
-        border-bottom: none;
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
       }
       .sub-header {
         display: flex;
         justify-content: space-between;
+        border-bottom: 1px solid var(--color-primary);
         span {
           font-size: 0.8rem;
           color: var(--color-primary);
@@ -50,11 +45,6 @@
             color: var(--color-menu-1);
           }
         }
-        .sub-content-1 {
-          display: flex;
-          justify-content: space-between;
-          border-bottom: 1px solid #d5dbdb;
-        }
         .title {
           color: var(--color-gray);
           cursor: pointer;
@@ -65,6 +55,21 @@
         .selected {
           color: var(--color-menu-2) !important;
         }
+        table,
+        tr,
+        td {
+          border-collapse: collapse;
+          border-bottom: 1px solid #c0c3c7;
+          padding: 0.5rem;
+        }
+        .sub-content-1 {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+      .music-with {
+        overflow-x: auto;
+        max-width: 25rem;
       }
     }
   }

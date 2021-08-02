@@ -4,28 +4,25 @@
 @import "margin";
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 5px !important;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: white;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #d3d4da;
+  background: rgb(240, 240, 240);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #dcdee6;
+  background: rgb(218, 218, 218);
 }
 html {
   font-size: 17px !important;
-  // @media only screen and (max-width: 600px) {
-  //   font-size: 10px !important;
-  // }
 }
 body {
   margin: 0;

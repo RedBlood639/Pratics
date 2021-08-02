@@ -23,8 +23,10 @@ const initialValue = {
 const Frametime: React.FC = () => {
   const dispatch = useDispatch();
   const [timelist, setTimelist] = useState<t_framtime[]>([]);
-  const [isshow, setIsshow] = useState<boolean>(false);
+  const [isTypeshow, setIsTypeshow] = useState<boolean>(false);
   const [selected, setSelected] = useState(initialValue);
+  // const [state, setstate] = useState(initialState)
+
   const timelistState = useSelector(
     (state: AppState) => state.musictimelist.frametime
   );
@@ -46,7 +48,7 @@ const Frametime: React.FC = () => {
       defined: data[0].defined,
       type: data[0].type,
     });
-    setIsshow(flag);
+    setIsTypeshow(flag);
   };
 
   const handletime = (e: string) => {
@@ -71,7 +73,7 @@ const Frametime: React.FC = () => {
         .put("/admin/updateframetime", selected)
         .then((res) => {
           dispatch(UpdateFrametime(selected));
-          setIsshow(false);
+          setIsTypeshow(false);
         })
         .catch((e) => console.log(e));
     } else {
@@ -79,14 +81,14 @@ const Frametime: React.FC = () => {
         .post("/admin/createframetime", selected)
         .then((res) => {
           dispatch(GetFrametime());
-          setIsshow(false);
+          setIsTypeshow(false);
         })
         .catch((e) => console.log(e));
     }
   };
   const handleAddItem = () => {
     setSelected(initialValue);
-    setIsshow(true);
+    setIsTypeshow(true);
   };
   return (
     <>
@@ -132,8 +134,8 @@ const Frametime: React.FC = () => {
       </div>
       <Modal
         animation={false}
-        show={isshow}
-        onHide={setIsshow}
+        show={isTypeshow}
+        onHide={setIsTypeshow}
         centered
         size="sm"
         aria-labelledby="contained-modal-title-vcenter"
@@ -173,7 +175,7 @@ const Frametime: React.FC = () => {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <button role="discard" onClick={() => setIsshow(false)}>
+          <button role="discard" onClick={() => setIsTypeshow(false)}>
             Discard
           </button>
           <button role="submit" onClick={() => handleSubmit()}>
