@@ -1,0 +1,28 @@
+.chatbuddy-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  .chatbuddy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      font-size: 0.8rem;
+      color: #7e8299;
+    }
+    button {
+      border: transparent;
+      background-color: #f1faff;
+      color: #009ef7;
+      &:hover {
+        background-color: #009ef7;
+        color: #f1faff;
+      }
+    }
+  }
+  .chatbuddy-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}

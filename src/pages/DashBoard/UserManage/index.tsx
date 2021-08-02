@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { GetUserlist } from "../../../store/userlist/actions";
+import { AppState } from "../../../store";
+//
+import { t_pageproperty } from "../../../types";
 import UserTable from "../../../components/Dashboard/UserManage/UserTable";
-import apiClient from "../../../components/apiClient";
 import * as dotenv from "dotenv";
-import { t_user, t_pageproperty } from "../../../types";
 import "./style.scss";
 dotenv.config();
 const UserManage: React.FC = () => {
-  const [users, setUsers] = useState<t_user[]>([]);
+  const dispatch = useDispatch();
+  const userlist = useSelector((state: AppState) => state.userlist);
+  const [users, setUsers] = useState<any>([]);
   const [pageproperty, setPageproperty] = useState<t_pageproperty>({
-    perpage: 5,
+    perpage: 10,
     totalcount: 0,
     pagecount: 0,
     currentpage: 1,
@@ -21,27 +26,23 @@ const UserManage: React.FC = () => {
     setPageproperty({ ...pageproperty, currentpage });
   };
   useEffect(() => {
-    apiClient
-      .get(`/admin/getusers`, { params: pageproperty })
-      .then((res) => {
-        console.log(pageproperty);
-        setUsers(res.data.items);
-        let data: number = res.data.count;
-        if (res.data.count % pageproperty.perpage !== 0) {
-          data = Math.floor(res.data.count / pageproperty.perpage) + 1;
-        } else {
-          data = Math.floor(res.data.count / pageproperty.perpage);
-        }
-        setPageproperty({
-          ...pageproperty,
-          pagecount: data,
-          totalcount: res.data.count,
-        });
-      })
-      .catch((e) => {
-        console.log("something went wrong");
-      });
-  }, [pageproperty.search, pageproperty.currentpage]);
+    dispatch(GetUserlist(pageproperty));
+  }, [pageproperty.currentpage, pageproperty.search]);
+
+  useEffect(() => {
+    setUsers(userlist.list);
+    let pagecount: any = userlist.count;
+    if (userlist.count % pageproperty.perpage !== 0) {
+      pagecount = Math.floor(userlist.count / pageproperty.perpage) + 1;
+    } else {
+      pagecount = Math.floor(userlist.count / pageproperty.perpage);
+    }
+    setPageproperty({
+      ...pageproperty,
+      pagecount,
+      totalcount: userlist.count,
+    });
+  }, [userlist]);
   return (
     <div className="manage-container">
       <div className="manage-body">

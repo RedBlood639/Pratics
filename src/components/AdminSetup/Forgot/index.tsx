@@ -36,7 +36,7 @@ const Forgot: React.FC<{ Onhandler?: any }> = ({ Onhandler }) => {
   };
   return (
     <React.Fragment>
-      <form className="form-content">
+      <form className="forget-content">
         <div>
           <p className="bg-label color-primary font-weight-700">
             Forgotten Password ?
@@ -56,7 +56,7 @@ const Forgot: React.FC<{ Onhandler?: any }> = ({ Onhandler }) => {
           />
           <p className="label color-danger">{errors}</p>
         </div>
-        <div>
+        <div className="forget-footer">
           <button
             role="submit"
             className="font-weight-600 sm-label mr1"

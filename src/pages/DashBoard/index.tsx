@@ -8,8 +8,8 @@ import "./style.scss";
 import AsdieMunu from "../../components/Layout/AsideMenu";
 //import content component
 const Home = React.lazy(() => import("./Home"));
-// const Footer = React.lazy(() => import("../../components/Layout/Footer"));
 const UserManage = React.lazy(() => import("./UserManage"));
+const Settings = React.lazy(() => import("./Settings"));
 
 const DashBoard: React.FC<{ history: any; match: any }> = ({ match }) => {
   return (
@@ -27,6 +27,11 @@ const DashBoard: React.FC<{ history: any; match: any }> = ({ match }) => {
             path={`${match.url}/usermanage`}
             exact
             component={UserManage}
+          />
+          <PrivateRoute
+            path={`${match.url}/settings`}
+            exact
+            component={Settings}
           />
           <Redirect to="/error" />
         </Switch>

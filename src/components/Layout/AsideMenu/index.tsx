@@ -26,6 +26,15 @@ const AsdieMunu: React.FC<{ history?: any }> = ({ history }) => {
           </Link>
         </div>
 
+        <div className="label pl1">SETTINGS</div>
+        <div className="menu-items">
+          <Link className="link" to="/dashboard/settings">
+            <div className="menu-item">
+              <span className="item">Settings</span>
+            </div>
+          </Link>
+        </div>
+
         <div className="menu-items signout">
           <Link className="link" to="/">
             <div className="menu-item">

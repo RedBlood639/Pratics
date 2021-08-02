@@ -105,7 +105,7 @@ const SignUp: React.FC<{ Onhandler?: any; history?: any }> = ({
   };
   return (
     <React.Fragment>
-      <form className="form-content">
+      <form className="signup-content">
         <div>
           <p className="bg-label color-primary font-weight-700">Sign Up</p>
           <span className="sm-label color-gray-2">
@@ -158,7 +158,7 @@ const SignUp: React.FC<{ Onhandler?: any; history?: any }> = ({
           <p className="label color-danger">{errors.confirm}</p>
         </div>
 
-        <div className="mt2">
+        <div className="mt2 signup-footer">
           <button
             role="signup"
             className="font-weight-600 sm-label mr1"

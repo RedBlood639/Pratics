@@ -16,17 +16,18 @@ button {
     align-items: center;
     margin-top: 1rem;
     .searchbox {
-      border-radius: 0.3rem;
-      background-color: #eef3f7;
       margin-left: 0.5rem;
       display: flex;
       align-items: center;
-      height: 2.5rem;
+      height: 2rem;
+      border-bottom: 1px solid #bbbdc5;
       svg {
+        color: #bbbdc5;
         padding: 0 0.5rem;
         width: 2.5rem;
       }
       input {
+        font-size: 0.8rem;
         background-color: inherit;
         margin-right: 0.5rem;
         height: 60%;
@@ -104,6 +105,7 @@ button {
         padding: 0.2rem;
         position: fixed;
         width: 6rem;
+        z-index: 10;
         height: 4rem;
         background-color: white;
         box-shadow: 3px 3px 3px 1px #e3f0f7, -3px -1px 3px 1px #e3f0f7;
@@ -155,10 +157,22 @@ button {
         justify-content: center;
         align-content: center;
         .div-avatar {
-          text-align: center;
+          display: flex;
+          justify-content: center;
           img {
             border-radius: 50%;
             width: 8rem;
+            height: 8rem;
+          }
+          .symbol {
+            background-color: var(--color-blue-1);
+            border-radius: 50%;
+            width: 8rem;
+            height: 8rem;
+            text-align: center;
+            span {
+              line-height: 8rem;
+            }
           }
         }
         .div-userinfo {

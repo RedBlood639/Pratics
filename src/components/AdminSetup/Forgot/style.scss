@@ -1,5 +1,32 @@
-.form-content {
+.forget-content {
   min-width: 400px;
+  .forget-footer {
+    display: flex;
+    button {
+      height: 3rem;
+      width: 30%;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer !important;
+    }
+    // role = signup
+    button[role="submit"] {
+      color: var(--color-white);
+      background-color: var(--color-blue-1);
+      &:hover {
+        background-color: var(--color-blue-2);
+      }
+    }
+    // role = cancel
+    button[role="cancel"] {
+      color: var(--color-blue-2);
+      background-color: var(--color-gray-1);
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-blue-2);
+      }
+    }
+  }
   input {
     width: 100%;
     height: 3.5rem;
@@ -13,31 +40,6 @@
     &::placeholder {
       color: var(--color-gray-2);
       opacity: 1;
-    }
-  }
-
-  button {
-    height: 3rem;
-    width: 30%;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer !important;
-  }
-  // role = signup
-  button[role="submit"] {
-    color: var(--color-white);
-    background-color: var(--color-blue-1);
-    &:hover {
-      background-color: var(--color-blue-2);
-    }
-  }
-  // role = cancel
-  button[role="cancel"] {
-    color: var(--color-blue-2);
-    background-color: var(--color-gray-1);
-    &:hover {
-      color: var(--color-white);
-      background-color: var(--color-blue-2);
     }
   }
 }

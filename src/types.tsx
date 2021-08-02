@@ -1,26 +1,17 @@
-export interface t_user {
-  id: number;
-  signtype: string;
-  name: string;
-  email: string;
-  role: string;
-  photoURL: string;
-  created_on: string;
-  remove_on: string;
-}
-export interface t_chatbuddy {
-  id: number;
-  photoURL: string;
-}
-
 export interface t_pageproperty {
-  pagecount: number;
   perpage: number;
   totalcount: number;
+  pagecount: number;
   currentpage: number;
   search: string;
 }
 
+export interface t_framtime {
+  id: number;
+  time: number;
+  type: string;
+  defined: number;
+}
 export const CountryItems = [
   "Afghanistan",
   "Albania",

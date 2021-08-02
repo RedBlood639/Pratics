@@ -1,0 +1,126 @@
+button {
+  font-weight: 600;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: transparent;
+}
+.frametime-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  .frametime-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+      font-size: 0.8rem;
+      color: var(--color-primary);
+    }
+    svg {
+      cursor: pointer;
+      color: var(--color-gray-2);
+      &:hover {
+        color: var(--color-blue-4);
+      }
+    }
+  }
+  .frametime-content {
+    .usertable {
+      td {
+        border-bottom: 1px solid #bbbdc5;
+        height: 2rem;
+        padding: 0.3rem 0;
+        .disable {
+          &:after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+          }
+        }
+        a {
+          cursor: pointer;
+          color: #85929e;
+        }
+      }
+      color: #abb2b9;
+      width: 100%;
+    }
+  }
+}
+
+.modal {
+  .modal-dialog {
+    .modal-content {
+      p {
+        margin: 0 0 0.3rem 0;
+        font-size: 0.8rem;
+        color: #181c32;
+      }
+      .modal-header {
+        font-weight: 500;
+        font-size: 1rem;
+      }
+      .modal-body {
+        display: flex;
+        justify-content: space-between;
+        .frametimefield {
+          width: 10rem;
+          .frametimeinput {
+            height: 2rem;
+            border: 1px solid #abb2b9;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            input,
+            select {
+              text-align: right;
+              border: transparent;
+              height: 100%;
+              &:focus {
+                outline: transparent;
+              }
+            }
+            input {
+              width: 100%;
+            }
+          }
+        }
+        .defaultfield {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          input {
+            height: 100%;
+          }
+        }
+      }
+      .modal-footer {
+        text-align: center;
+        button[role="discard"] {
+          background-color: #f1faff;
+          color: #009ef7;
+          &:hover {
+            background-color: #009ef7;
+            color: #f1faff;
+          }
+        }
+        button[role="submit"] {
+          background-color: #009ef7;
+          color: #f1faff;
+          &:hover {
+            background-color: #f1faff;
+            color: #009ef7;
+          }
+        }
+      }
+    }
+  }
+}

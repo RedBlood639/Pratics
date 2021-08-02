@@ -64,7 +64,7 @@ const SignIn: React.FC<{ Onhandler?: any; history?: any }> = ({
   };
   return (
     <React.Fragment>
-      <form className="form-content">
+      <form className="signin-content">
         <div>
           <p className="bg-label color-primary font-weight-700">
             Welcome to Mindmail
