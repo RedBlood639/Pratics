@@ -103,6 +103,25 @@
             }
           }
         }
+
+        .music-modal {
+          .music-upload {
+            border: 1px solid var(--color-primary);
+            text-align: center;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            label {
+              cursor: pointer;
+            }
+            .uploadmusic {
+              display: none;
+            }
+          }
+          .music-preview {
+            overflow-x: auto;
+            font-size: 0.7rem;
+          }
+        }
       }
     }
   }

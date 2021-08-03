@@ -15,7 +15,7 @@ import apiClient from "../../../../apiClient";
 
 const initialValue = {
   id: 0,
-  time: 0,
+  time: 1,
   type: "s",
   defined: 0,
 };
@@ -68,6 +68,9 @@ const Frametime: React.FC = () => {
   };
 
   const handleSubmit = () => {
+    if (selected.time === 0) {
+      return;
+    }
     if (selected.id !== 0) {
       apiClient
         .put("/admin/updateframetime", selected)

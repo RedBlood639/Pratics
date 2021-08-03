@@ -10,21 +10,41 @@ import { AppState } from "../../../../store";
 import Frametime from "./Frametime";
 import AddSvg from "../../../../assets/icons/SVG/AddSvg";
 import { Modal } from "react-bootstrap";
-import "./style.scss";
+import { uuidv4 } from "../../../../utility/Generator";
+import ReactS3Client from "react-aws-s3-typescript";
 import apiClient from "../../../apiClient";
+import "./style.scss";
 
 const initialType = {
   id: 0,
   musictype: "",
 };
 
+const initialMuic = {
+  name: "",
+  type: "",
+  duration: "",
+  url: "",
+};
+
+const config = {
+  bucketName: process.env.BUCKETNAME,
+  accessKeyId: process.env.ACCESSKEYID,
+  secretAccessKey: process.env.SECRETACCESSKEY,
+  region: process.env.REGION,
+};
 const Setting2: React.FC = () => {
   const dispatch = useDispatch();
   const [musictypelist, setMusictypelist] = useState([]);
   const [music, setMusic] = useState([]);
   const [showMusicType, setShowMusicType] = useState<boolean>(false);
+  const [showMusic, setShowMusic] = useState<boolean>(false);
   const [selectedtypeId, setSelectedTypeId] = useState<number>(0);
   const [editType, setEditType] = useState(initialType);
+  const [uploadmusic, setUploadmusic] = useState(initialMuic);
+  const [uploadmusicError, setUploadmusicError] = useState<string>("");
+  //
+  const [selectedFile, setSelectedFile] = useState<any>();
   const musictypeState = useSelector(
     (state: AppState) => state.musictimelist.musictype
   );
@@ -53,6 +73,9 @@ const Setting2: React.FC = () => {
   };
 
   const handleSubmitType = () => {
+    if (editType.musictype.trim() === "") {
+      return;
+    }
     if (editType.id !== 0) {
       apiClient
         .put("/admin/updatemusictype", editType)
@@ -85,6 +108,69 @@ const Setting2: React.FC = () => {
     setEditType(initialType);
     setShowMusicType(true);
   };
+  //
+  const handleSubmitMusic = async () => {
+    // const myArr = selectedFile.name.split(".");
+    // const s3  = new ReactS3Client (config);
+    // await s3 .uploadFile(
+    //   selectedFile,
+    //   uuidv4() + "." + myArr[myArr.length - 1]
+    // )
+    //   .then((data: any) => {
+    //     console.log(data);
+    //     //upload file
+    //     setShowMusic(false);
+    //   })
+    //   .catch((err: any) => console.error(err));
+  };
+
+  const handleShowMusic = (flag: boolean) => {
+    setShowMusic(flag);
+    setUploadmusicError("");
+    setUploadmusic(initialMuic);
+  };
+
+  const handlemusicchange = async (event: any) => {
+    if (
+      event.target.files[0].type !== "audio/mpeg" &&
+      event.target.files[0].type !== "audio/wav"
+    ) {
+      setUploadmusicError("Only *.mp3, *.wav");
+      setUploadmusic(initialMuic);
+      return;
+    }
+    if (event.target.files.length) {
+      const audio = document.createElement("audio");
+      const reader = new FileReader();
+      reader.onload = function (e: any) {
+        audio.src = e.target.result;
+        audio.addEventListener(
+          "loadedmetadata",
+          function () {
+            const minutes = Math.floor(audio.duration / 60);
+            const timeForSeconds = audio.duration - minutes * 60; // seconds without counted minutes
+            const seconds = Math.floor(timeForSeconds);
+            const secondsReadable = seconds > 9 ? seconds : `0${seconds}`; // To change 2:2 into 2:02
+            const time = `${minutes}:${secondsReadable}`;
+            setUploadmusicError("");
+            setUploadmusic({
+              name: event.target.files[0].name,
+              type: event.target.files[0].type,
+              duration: time,
+              url: "",
+            });
+            setSelectedFile(event.target.files[0]);
+          },
+          false
+        );
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    } else {
+      setUploadmusicError("");
+      setUploadmusic(initialMuic);
+    }
+  };
+
   return (
     <>
       <div className="setting2-container">
@@ -125,7 +211,9 @@ const Setting2: React.FC = () => {
             <div className="music-container">
               <div className="sub-header">
                 <span>Music</span>
-                <div>{musictypelist.length === 0 ? "" : <AddSvg />}</div>
+                <div onClick={() => handleShowMusic(true)}>
+                  {musictypelist.length === 0 ? "" : <AddSvg />}
+                </div>
               </div>
               <div className="sub-content music-with">
                 <table>
@@ -184,6 +272,71 @@ const Setting2: React.FC = () => {
           </button>
           <button role="submit" onClick={() => handleSubmitType()}>
             Submit
+          </button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal
+        animation={false}
+        show={showMusic}
+        onHide={setShowMusic}
+        centered
+        size="sm"
+        aria-labelledby="contained-modal-title-vcenter"
+      >
+        <Modal.Header>
+          <span>{`${editType.id === 0 ? "Add" : "Edit"} Music`}</span>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="music-modal">
+            <div className="music-upload">
+              <label htmlFor="upload-music">{`${
+                uploadmusic.name.trim() === "" ? "Please " : ""
+              }Upload ${
+                uploadmusic.name.trim() === "" ? " " : "Other"
+              } Music`}</label>
+              <input
+                type="file"
+                id="upload-music"
+                className="uploadmusic"
+                accept=".mp3, .wav"
+                onChange={handlemusicchange}
+              />
+            </div>
+            <br />
+            {uploadmusicError !== "" ? (
+              <div style={{ textAlign: "center" }}>
+                <span style={{ color: "red", fontSize: "0.8rem" }}>
+                  {uploadmusicError}
+                </span>
+              </div>
+            ) : (
+              ""
+            )}
+            {uploadmusic.name ? (
+              <div className="music-preview">
+                <div>
+                  <span>time : </span>
+                  <span>{uploadmusic.duration}</span>
+                </div>
+                <br />
+                <div>
+                  <span>type : </span>
+                  <span>{uploadmusic.type}</span>
+                </div>
+                <br />
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button role="discard" onClick={() => handleShowMusic(false)}>
+            Discard
+          </button>
+          <button role="submit" onClick={() => handleSubmitMusic()}>
+            Upload
           </button>
         </Modal.Footer>
       </Modal>
