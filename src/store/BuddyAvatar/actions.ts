@@ -2,7 +2,7 @@ import { EDIT_BUDDYAVATAR, GET_BUDDYAVATAR, BuddyAvatarActions } from "./types";
 import { Dispatch } from "redux";
 import { AppState } from "..";
 import { AppActions } from "../types";
-import { apiClientwithToken } from "../../components/apiClient";
+import { apiClientwithToken } from "../apiClient";
 
 const FetchBuddyAvatarlist = (payload: any): BuddyAvatarActions => {
   return {

@@ -107,7 +107,6 @@ const Pagination: React.FC<{
   };
   return (
     <div className="pagination">
-      <section className="total">{`Count ${totalcount}`}</section>
       <section className="btn-page">
         <PrevBtn
           disabled={activePage === 1}
@@ -121,6 +120,7 @@ const Pagination: React.FC<{
           onClick={() => handlePage(activePage + 1)}
         />
       </section>
+      <section className="total">{`Count ${totalcount}`}</section>
     </div>
   );
 };

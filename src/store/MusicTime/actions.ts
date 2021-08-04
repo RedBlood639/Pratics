@@ -7,7 +7,7 @@ import {
 import { Dispatch } from "redux";
 import { AppState } from "..";
 import { AppActions } from "../types";
-import { apiClientwithToken } from "../../components/apiClient";
+import { apiClientwithToken } from "../apiClient";
 import { t_framtime } from "../../types";
 
 const FetchFrametime = (payload: any): MusicTimeActions => {

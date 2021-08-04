@@ -2,7 +2,7 @@ import { GET_USERLIST, EDIT_USER, UserlistActions } from "./types";
 import { Dispatch } from "redux";
 import { AppState } from "..";
 import { AppActions } from "../types";
-import { apiClientwithToken } from "../../components/apiClient";
+import { apiClientwithToken } from "../apiClient";
 
 const FetchUserlist = (payload: any): UserlistActions => {
   return {
@@ -33,7 +33,7 @@ export const EditUser = (id: number, role: string): any => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const data = getState().userlist.list;
     data.map((item: any) => {
-      if (item.id === id) {
+      if (item.userid === id) {
         item.role = role;
       }
     });
@@ -45,7 +45,7 @@ export const DeleteUser = (id: number): any => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const data = getState().userlist.list;
     data.map((item: any) => {
-      if (item.id === id) {
+      if (item.userid === id) {
         item.state = 2;
       }
     });

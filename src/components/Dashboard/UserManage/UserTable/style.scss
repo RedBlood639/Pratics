@@ -18,7 +18,7 @@
         width: 2.5rem;
       }
       input {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         background-color: inherit;
         margin-right: 0.5rem;
         height: 60%;
@@ -33,10 +33,10 @@
     td {
       border-bottom: 1px dotted #bbbdc5;
       height: 2rem;
-      padding: 0.3rem 0;
+      padding: 0.3rem 1rem;
     }
     .usertable {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       color: #a1a5b7 !important;
       width: 100% !important;
       clear: both;
@@ -134,13 +134,13 @@
     .modal-content {
       .modal-header {
         font-weight: 600;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
       .modal-body {
         .div-user {
           p {
             margin: 1rem 0 0.3rem 0;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #181c32;
           }
           height: 29rem;
@@ -201,11 +201,11 @@
                 display: flex;
                 flex-direction: column;
                 .span-1 {
-                  font-size: 0.8rem;
+                  font-size: 0.7rem;
                   color: #181c32;
                 }
                 .span-2 {
-                  font-size: 0.75rem;
+                  font-size: 0.65rem;
                   color: #7e8299;
                 }
               }

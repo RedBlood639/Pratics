@@ -8,7 +8,7 @@ import { Modal } from "react-bootstrap";
 import { s3Config } from "../../s3Config";
 import ReactS3Client from "react-aws-s3-typescript";
 import { uuidv4 } from "../../../../utility/Generator";
-import { apiClientwithToken } from "../../../apiClient";
+import { apiClientwithToken } from "../../../../store/apiClient";
 import "./style.scss";
 //
 
@@ -136,7 +136,7 @@ const Setting1: React.FC = () => {
             <br />
             {uploadAvatarError !== "" ? (
               <div style={{ textAlign: "center" }}>
-                <span style={{ color: "red", fontSize: "0.8rem" }}>
+                <span style={{ color: "red", fontSize: "0.7rem" }}>
                   {uploadAvatarError}
                 </span>
               </div>

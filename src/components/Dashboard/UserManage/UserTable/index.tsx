@@ -11,7 +11,7 @@ import NextSvg from "../../../../assets/icons/SVG/NextSvg";
 import { Modal } from "react-bootstrap";
 import Pagination from "../Pagination";
 import "./style.scss";
-import { apiClientwithToken } from "../../../apiClient";
+import { apiClientwithToken } from "../../../../store/apiClient";
 //import material
 const PrevBtn = (props: any) => (
   <button type="button" {...props}>
@@ -57,9 +57,9 @@ const SelectBtn: React.FC<{ item: any }> = ({ item }) => {
 
   const handleSubmit = async () => {
     await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
-      .put("/admin/edituser", { id: item.id, role: isRole })
+      .put("/admin/edituser", { id: item.userid, role: isRole })
       .then((res) => {
-        dispatch(EditUser(item.id, isRole));
+        dispatch(EditUser(item.userid, isRole));
         handleDiscard(false);
       })
       .catch((e) => {
@@ -76,9 +76,9 @@ const SelectBtn: React.FC<{ item: any }> = ({ item }) => {
   const handleDelete = async () => {
     document.removeEventListener("mousedown", handleClickOutside);
     await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
-      .delete("/admin/deleteuser", { params: { id: item.id } })
+      .delete("/admin/deleteuser", { params: { id: item.userid } })
       .then((res) => {
-        dispatch(DeleteUser(item.id));
+        dispatch(DeleteUser(item.userid));
       })
       .catch((e) => {
         console.log(e);
@@ -223,7 +223,7 @@ const UserTable: React.FC<{
             <tbody>
               {items.map((item: any, index: number) => {
                 return (
-                  <tr key={item.id}>
+                  <tr key={item.userid}>
                     <td className="selectbox">
                       {index + 1 + page.perpage * (page.currentpage - 1)}
                     </td>
@@ -236,17 +236,17 @@ const UserTable: React.FC<{
                             <div className="symbol">
                               <span className="color-white sm-label">
                                 {item.name.indexOf(" ") === -1
-                                  ? item.name[0].toUpperCase()
-                                  : item.name[0].toUpperCase() +
-                                    item.name[
-                                      item.name.indexOf(" ") + 1
+                                  ? item.username[0].toUpperCase()
+                                  : item.username[0].toUpperCase() +
+                                    item.username[
+                                      item.username.indexOf(" ") + 1
                                     ].toUpperCase()}
                               </span>
                             </div>
                           )}
                         </div>
                         <div className="userinfo">
-                          <span className="sp-name">{item.name}</span>
+                          <span className="sp-name">{item.username}</span>
                           <span>{item.email}</span>
                         </div>
                       </div>
@@ -255,7 +255,9 @@ const UserTable: React.FC<{
                       {item.role === "Admin" ? "Administrator" : "Customer"}
                     </td>
                     <td>
-                      <div className="color-primary">Yesterday</div>
+                      <div className="color-primary">
+                        {new Date(item.joinDate).toLocaleString()}
+                      </div>
                     </td>
                     <td>{new Date(item.created_on).toLocaleString()}</td>
                     <td>

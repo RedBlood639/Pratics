@@ -12,7 +12,7 @@
       display: grid;
       grid-template-columns: 1fr 2fr;
       .musictype-container {
-        width: 100%;
+        min-width: 15rem;
         border-right: 1px solid #cacfd2;
         padding: 0.5rem 1rem;
       }
@@ -25,7 +25,7 @@
         justify-content: space-between;
         border-bottom: 1px solid var(--color-primary);
         span {
-          font-size: 0.8rem;
+          font-size: 0.7rem;
           color: var(--color-primary);
         }
         svg {
@@ -38,7 +38,7 @@
       }
       .sub-content {
         color: #85929e;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         a {
           text-decoration: none;
           &:hover {
@@ -58,6 +58,7 @@
         table,
         tr,
         td {
+          width: 100%;
           border-collapse: collapse;
           border-bottom: 1px solid #c0c3c7;
           padding: 0.5rem;
@@ -83,7 +84,7 @@
         .musictype-modal {
           p {
             margin: 1rem 0 0.3rem 0;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #181c32;
           }
           input {

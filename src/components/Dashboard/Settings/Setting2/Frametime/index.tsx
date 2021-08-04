@@ -11,7 +11,7 @@ import AddSvg from "../../../../../assets/icons/SVG/AddSvg";
 import { t_framtime } from "../../../../../types";
 
 import "./style.scss";
-import { apiClientwithToken } from "../../../../apiClient";
+import { apiClientwithToken } from "../../../../../store/apiClient";
 
 const initialValue = {
   id: 0,

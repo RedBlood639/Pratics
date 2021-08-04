@@ -23,7 +23,6 @@ const App: React.FC = () => {
           <Switch>
             <Route path="/" exact component={AdminSetup} />
             <PrivateRoute path="/dashboard" component={DashBoard} />
-
             <Route path="/error" exact component={ErrorPage} />
             <Redirect to="/error" />
           </Switch>

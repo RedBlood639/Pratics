@@ -12,7 +12,7 @@ import AddSvg from "../../../../assets/icons/SVG/AddSvg";
 import { Modal } from "react-bootstrap";
 import { uuidv4 } from "../../../../utility/Generator";
 import ReactS3Client from "react-aws-s3-typescript";
-import { apiClientwithToken } from "../../../apiClient";
+import { apiClientwithToken } from "../../../../store/apiClient";
 import { s3Config } from "../../s3Config";
 import "./style.scss";
 
@@ -231,15 +231,14 @@ const Setting2: React.FC = () => {
                   <tbody>
                     {music.map((item: any, index: number) => (
                       <tr key={item.id}>
-                        <td>{index + 1}</td>
-                        <td>{item.musicname}</td>
+                        <td style={{ width: "5%" }}>{index + 1}</td>
                         <td>
                           <a
                             href={item.musicURL}
                             target="_blank"
                             rel="noreferrer"
                           >
-                            {item.musicURL}
+                            {item.musicname}
                           </a>
                         </td>
                         <td>{item.musictime}</td>
@@ -320,7 +319,7 @@ const Setting2: React.FC = () => {
             <br />
             {uploadmusicError !== "" ? (
               <div style={{ textAlign: "center" }}>
-                <span style={{ color: "red", fontSize: "0.8rem" }}>
+                <span style={{ color: "red", fontSize: "0.7rem" }}>
                   {uploadmusicError}
                 </span>
               </div>
