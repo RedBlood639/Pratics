@@ -12,7 +12,8 @@ import AddSvg from "../../../../assets/icons/SVG/AddSvg";
 import { Modal } from "react-bootstrap";
 import { uuidv4 } from "../../../../utility/Generator";
 import ReactS3Client from "react-aws-s3-typescript";
-import apiClient from "../../../apiClient";
+import { apiClientwithToken } from "../../../apiClient";
+import { s3Config } from "../../s3Config";
 import "./style.scss";
 
 const initialType = {
@@ -27,12 +28,6 @@ const initialMuic = {
   url: "",
 };
 
-const config = {
-  bucketName: process.env.BUCKETNAME,
-  accessKeyId: process.env.ACCESSKEYID,
-  secretAccessKey: process.env.SECRETACCESSKEY,
-  region: process.env.REGION,
-};
 const Setting2: React.FC = () => {
   const dispatch = useDispatch();
   const [musictypelist, setMusictypelist] = useState([]);
@@ -72,12 +67,12 @@ const Setting2: React.FC = () => {
     dispatch(GetMusic(id));
   };
 
-  const handleSubmitType = () => {
+  const handleSubmitType = async () => {
     if (editType.musictype.trim() === "") {
       return;
     }
     if (editType.id !== 0) {
-      apiClient
+      await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
         .put("/admin/updatemusictype", editType)
         .then((res) => {
           dispatch(UpdateMusciType(editType));
@@ -85,7 +80,7 @@ const Setting2: React.FC = () => {
         })
         .catch((e) => console.log(e));
     } else {
-      apiClient
+      await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
         .post("/admin/addmusictype", editType)
         .then((res) => {
           dispatch(GetMusicType());
@@ -110,18 +105,34 @@ const Setting2: React.FC = () => {
   };
   //
   const handleSubmitMusic = async () => {
-    // const myArr = selectedFile.name.split(".");
-    // const s3  = new ReactS3Client (config);
-    // await s3 .uploadFile(
-    //   selectedFile,
-    //   uuidv4() + "." + myArr[myArr.length - 1]
-    // )
-    //   .then((data: any) => {
-    //     console.log(data);
-    //     //upload file
-    //     setShowMusic(false);
-    //   })
-    //   .catch((err: any) => console.error(err));
+    if (uploadmusic.name.trim() === "") {
+      setUploadmusicError("Please select music");
+      setUploadmusic(initialMuic);
+      return;
+    }
+
+    const s3 = new ReactS3Client(s3Config);
+    await s3
+      .uploadFile(selectedFile, uuidv4())
+      .then(async (data: any) => {
+        const postData = {
+          name: data.key,
+          url: data.location,
+          typeId: selectedtypeId,
+          duration: uploadmusic.duration,
+        };
+        await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
+          .post("/admin/addmusic", postData)
+          .then((res) => {
+            setUploadmusic(initialMuic);
+            dispatch(GetMusic(postData.typeId));
+            setShowMusic(false);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      })
+      .catch((err: any) => console.error(err));
   };
 
   const handleShowMusic = (flag: boolean) => {
@@ -222,13 +233,16 @@ const Setting2: React.FC = () => {
                       <tr key={item.id}>
                         <td>{index + 1}</td>
                         <td>{item.musicname}</td>
-                        <td>{item.musicURL}</td>
-                        <td>{item.musictime}</td>
                         <td>
-                          <a className="edit" href="#">
-                            Edit
+                          <a
+                            href={item.musicURL}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {item.musicURL}
                           </a>
                         </td>
+                        <td>{item.musictime}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -250,7 +264,7 @@ const Setting2: React.FC = () => {
         aria-labelledby="contained-modal-title-vcenter"
       >
         <Modal.Header>
-          <span>{`${editType.id === 0 ? "Add" : "Edit"} MusicType`}</span>
+          <span>{`${editType.id === 0 ? "ADD" : "EDIT"} MUSICTYPE`}</span>
         </Modal.Header>
         <Modal.Body>
           <div className="musictype-modal">
@@ -285,7 +299,7 @@ const Setting2: React.FC = () => {
         aria-labelledby="contained-modal-title-vcenter"
       >
         <Modal.Header>
-          <span>{`${editType.id === 0 ? "Add" : "Edit"} Music`}</span>
+          <span>{`${editType.id === 0 ? "ADD" : "EDIT"} MUSIC`}</span>
         </Modal.Header>
         <Modal.Body>
           <div className="music-modal">

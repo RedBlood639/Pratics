@@ -11,7 +11,7 @@ import NextSvg from "../../../../assets/icons/SVG/NextSvg";
 import { Modal } from "react-bootstrap";
 import Pagination from "../Pagination";
 import "./style.scss";
-import apiClient from "../../../apiClient";
+import { apiClientwithToken } from "../../../apiClient";
 //import material
 const PrevBtn = (props: any) => (
   <button type="button" {...props}>
@@ -55,8 +55,8 @@ const SelectBtn: React.FC<{ item: any }> = ({ item }) => {
     setIsshow(flag);
   };
 
-  const handleSubmit = () => {
-    apiClient
+  const handleSubmit = async () => {
+    await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
       .put("/admin/edituser", { id: item.id, role: isRole })
       .then((res) => {
         dispatch(EditUser(item.id, isRole));
@@ -73,9 +73,9 @@ const SelectBtn: React.FC<{ item: any }> = ({ item }) => {
     setIsdrop(false);
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     document.removeEventListener("mousedown", handleClickOutside);
-    apiClient
+    await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
       .delete("/admin/deleteuser", { params: { id: item.id } })
       .then((res) => {
         dispatch(DeleteUser(item.id));
@@ -110,7 +110,7 @@ const SelectBtn: React.FC<{ item: any }> = ({ item }) => {
         aria-labelledby="contained-modal-title-vcenter"
       >
         <Modal.Header>
-          <span>Edit User</span>
+          <span>{"EDIT USER"}</span>
         </Modal.Header>
         <Modal.Body>
           <div className="div-user">

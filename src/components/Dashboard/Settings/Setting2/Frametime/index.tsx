@@ -11,7 +11,7 @@ import AddSvg from "../../../../../assets/icons/SVG/AddSvg";
 import { t_framtime } from "../../../../../types";
 
 import "./style.scss";
-import apiClient from "../../../../apiClient";
+import { apiClientwithToken } from "../../../../apiClient";
 
 const initialValue = {
   id: 0,
@@ -67,12 +67,12 @@ const Frametime: React.FC = () => {
     setSelected({ ...selected, defined: flag ? 1 : 0 });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (selected.time === 0) {
       return;
     }
     if (selected.id !== 0) {
-      apiClient
+      await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
         .put("/admin/updateframetime", selected)
         .then((res) => {
           dispatch(UpdateFrametime(selected));
@@ -80,7 +80,7 @@ const Frametime: React.FC = () => {
         })
         .catch((e) => console.log(e));
     } else {
-      apiClient
+      await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
         .post("/admin/createframetime", selected)
         .then((res) => {
           dispatch(GetFrametime());
@@ -144,7 +144,7 @@ const Frametime: React.FC = () => {
         aria-labelledby="contained-modal-title-vcenter"
       >
         <Modal.Header>
-          <span>{`${selected.id === 0 ? "Add" : "Edit"} FrameTime`}</span>
+          <span>{`${selected.id === 0 ? "ADD" : "EDIT"} FRAMETIME`}</span>
         </Modal.Header>
         <Modal.Body>
           <div className="frametimemodal">

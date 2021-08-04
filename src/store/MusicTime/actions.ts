@@ -7,7 +7,7 @@ import {
 import { Dispatch } from "redux";
 import { AppState } from "..";
 import { AppActions } from "../types";
-import apiClient from "../../components/apiClient";
+import { apiClientwithToken } from "../../components/apiClient";
 import { t_framtime } from "../../types";
 
 const FetchFrametime = (payload: any): MusicTimeActions => {
@@ -32,8 +32,8 @@ const FetchMusic = (payload: any): MusicTimeActions => {
 };
 
 export const GetFrametime = (): any => {
-  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    apiClient
+  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+    await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
       .get("/visulization/frametime")
       .then((res) => dispatch(FetchFrametime(res.data.items)))
       .catch((e) => {
@@ -59,8 +59,8 @@ export const UpdateFrametime = (data: t_framtime): any => {
 
 //Music & time
 export const GetMusicType = (): any => {
-  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    apiClient
+  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+    await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
       .get("/visulization/musictype")
       .then((res) => dispatch(FetchMusicType(res.data.items)))
       .catch((e) => {
@@ -70,8 +70,8 @@ export const GetMusicType = (): any => {
 };
 
 export const GetMusic = (id: number): any => {
-  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    apiClient
+  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+    await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
       .get("/visulization/music", { params: { id } })
       .then((res) => dispatch(FetchMusic(res.data.items)))
       .catch((e) => {

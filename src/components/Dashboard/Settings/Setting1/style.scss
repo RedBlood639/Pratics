@@ -26,3 +26,30 @@
     gap: 1rem;
   }
 }
+
+.modal {
+  .modal-dialog {
+    .modal-content {
+      .modal-body {
+        .avatar-modal {
+          .avatar-upload {
+            border: 1px solid var(--color-primary);
+            text-align: center;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            label {
+              cursor: pointer;
+            }
+            .uploadavatar {
+              display: none;
+            }
+          }
+          .avatar-preview {
+            overflow-x: auto;
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+}

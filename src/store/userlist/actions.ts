@@ -2,7 +2,7 @@ import { GET_USERLIST, EDIT_USER, UserlistActions } from "./types";
 import { Dispatch } from "redux";
 import { AppState } from "..";
 import { AppActions } from "../types";
-import apiClient from "../../components/apiClient";
+import { apiClientwithToken } from "../../components/apiClient";
 
 const FetchUserlist = (payload: any): UserlistActions => {
   return {
@@ -19,8 +19,8 @@ const FetchUserEdit = (payload: any): UserlistActions => {
 };
 
 export const GetUserlist = (pageproperty: any): any => {
-  return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    apiClient
+  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+    await apiClientwithToken(localStorage.getItem("mindmail_admin_token"))
       .get("/admin/getusers", { params: pageproperty })
       .then((res) => {
         dispatch(FetchUserlist(res.data));
